@@ -1,0 +1,33 @@
+{
+  "_note": "APPROXIMATE fee data for 2025-26. Always direct users to verify at ugadmissions.nust.edu.pk — fees are revised each year.",
+  "_source": "nust.edu.pk prospectus 2025-26 (approximate)",
+  "_verify_at": "ugadmissions.nust.edu.pk",
+  "per_semester_pkr": {
+    "SEECS": { "amount": 210000, "display": "~PKR 2.1 lakh", "note": "Engineering & CS programmes" },
+    "SMME":  { "amount": 190000, "display": "~PKR 1.8–2.0 lakh", "note": "Mechanical & Manufacturing" },
+    "SCEE":  { "amount": 190000, "display": "~PKR 1.8–2.0 lakh", "note": "Civil & Environmental" },
+    "SCME":  { "amount": 190000, "display": "~PKR 1.8–2.0 lakh", "note": "Chemical & Materials" },
+    "NBS":   { "amount": 160000, "display": "~PKR 1.6 lakh", "note": "Business programmes" },
+    "ASAB":  { "amount": 160000, "display": "~PKR 1.5–1.7 lakh", "note": "Applied Biosciences" },
+    "SNS":   { "amount": 160000, "display": "~PKR 1.5–1.7 lakh", "note": "Natural Sciences" },
+    "S3H":   { "amount": 140000, "display": "~PKR 1.3–1.5 lakh", "note": "Social Sciences & Humanities" },
+    "SADA":  { "amount": 180000, "display": "~PKR 1.8 lakh", "note": "Architecture (5-year programme)" },
+    "IGIS":  { "amount": 150000, "display": "~PKR 1.5 lakh", "note": "GIS" }
+  },
+  "additional_per_semester_pkr": {
+    "student_activity_fund": "2000–3000",
+    "library_fee": "1000–2000",
+    "medical_fund": "1500–2500"
+  },
+  "one_time_pkr": {
+    "security_deposit_refundable": "5000–10000"
+  },
+  "hostel_per_month_pkr": {
+    "range": "8000–15000",
+    "note": "Varies by room type (single / double / shared)"
+  },
+  "total_degree_estimate_pkr": {
+    "engineering_8sem": "14–17 lakh total (approximate)",
+    "note": "Includes tuition only. Add hostel + living for full cost."
+  }
+}

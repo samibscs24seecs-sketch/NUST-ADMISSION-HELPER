@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NUST Admission Helper — AI Chatbot</title>
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN SYSTEM
+═══════════════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#03080f;
+  --s1:#060e1c;
+  --s2:#08132a;
+  --s3:#0d1c38;
+  --s4:#122042;
+  --border:rgba(0,207,255,.12);
+  --border2:rgba(0,207,255,.25);
+  --cyan:#00cfff;
+  --cyan2:#38d9ff;
+  --blue:#0ea5e9;
+  --purple:#7928ca;
+  --purple2:#9d4edd;
+  --gold:#fbbf24;
+  --green:#10b981;
+  --red:#f43f5e;
+  --text:#e8f4fd;
+  --text2:#9ab8d4;
+  --text3:#4a7090;
+  --r:14px;
+  --glow-cyan:0 0 20px rgba(0,207,255,.3);
+  --glow-purple:0 0 20px rgba(121,40,202,.4);
+  --transition:.2s cubic-bezier(.4,0,.2,1);
+}
+
+html,body{height:100%;overflow:hidden;
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);}
+
+/* ─── Ambient Background ─────────────────── */
+.orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(0,207,255,.18),transparent 70%);
+  top:-150px;left:-100px;animation:drift1 22s ease-in-out infinite}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(121,40,202,.2),transparent 70%);
+  bottom:-100px;right:-80px;animation:drift2 28s ease-in-out infinite}
+.orb3{width:250px;height:250px;background:radial-gradient(circle,rgba(14,165,233,.15),transparent 70%);
+  top:45%;left:40%;animation:drift3 18s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,-60px)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}33%{transform:translate(-40px,30px)}66%{transform:translate(40px,-20px)}}
+
+/* Grid lines bg */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,207,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,207,255,.03) 1px,transparent 1px);
+  background-size:50px 50px;
+}
+
+/* ─── App Shell ──────────────────────────── */
+#app{position:relative;z-index:1;display:flex;flex-direction:column;height:100vh}
+
+/* ═══════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════ */
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.7rem 1.6rem;
+  background:linear-gradient(135deg,rgba(6,14,28,.95),rgba(8,19,42,.95));
+  border-bottom:1px solid var(--border2);
+  backdrop-filter:blur(20px);
+  flex-shrink:0;position:relative;overflow:hidden;
+}
+header::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),var(--purple),var(--cyan),transparent);
+  animation:scanline 4s linear infinite;
+}
+@keyframes scanline{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+.logo{display:flex;align-items:center;gap:1rem}
+.logo-gem{
+  width:46px;height:46px;border-radius:12px;
+  background:linear-gradient(135deg,#003b6e,#0066aa,#00cfff);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:1rem;color:#fff;letter-spacing:.3px;
+  position:relative;box-shadow:0 0 24px rgba(0,207,255,.5),inset 0 1px 0 rgba(255,255,255,.2);
+}
+.logo-gem::before{
+  content:'';position:absolute;inset:-2px;border-radius:14px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  z-index:-1;opacity:.6;animation:logoGlow 3s ease-in-out infinite;
+}
+@keyframes logoGlow{0%,100%{opacity:.4}50%{opacity:.8}}
+.logo-text h1{
+  font-size:1.1rem;font-weight:800;
+  background:linear-gradient(135deg,var(--text),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.logo-text p{font-size:.7rem;color:var(--text3);margin-top:2px;letter-spacing:.3px}
+
+.header-center{
+  display:flex;gap:.35rem;
+  background:rgba(0,0,0,.35);border:1px solid var(--border);border-radius:32px;
+  padding:.3rem .4rem;
+}
+.tab{
+  padding:.6rem 1.4rem;border-radius:26px;cursor:pointer;font-size:.88rem;font-weight:600;
+  color:var(--text3);border:1px solid transparent;background:transparent;
+  transition:all .25s cubic-bezier(.4,0,.2,1);white-space:nowrap;position:relative;
+  letter-spacing:.2px;
+}
+.tab:hover{color:var(--text2);background:rgba(255,255,255,.05)}
+.tab.active{
+  background:linear-gradient(135deg,#0e3a5c,#0c2d52);
+  color:#fff;
+  font-size:1.05rem;
+  font-weight:800;
+  padding:.7rem 1.8rem;
+  border-color:var(--cyan);
+  box-shadow:0 0 18px rgba(0,207,255,.45),0 0 6px rgba(0,207,255,.25),inset 0 1px 0 rgba(0,207,255,.2);
+  text-shadow:0 0 10px rgba(0,207,255,.6);
+  animation:tabPulse 2.5s ease-in-out infinite;
+}
+.tab.active::before{
+  content:'';position:absolute;inset:-1px;border-radius:25px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  z-index:-1;opacity:.35;
+}
+@keyframes tabPulse{
+  0%,100%{box-shadow:0 0 18px rgba(0,207,255,.45),0 0 6px rgba(0,207,255,.25),inset 0 1px 0 rgba(0,207,255,.2)}
+  50%{box-shadow:0 0 28px rgba(0,207,255,.7),0 0 12px rgba(0,207,255,.4),inset 0 1px 0 rgba(0,207,255,.3)}
+}
+
+.header-right{display:flex;align-items:center;gap:.6rem}
+.refresh-btn{
+  display:flex;align-items:center;gap:.55rem;
+  padding:.6rem 1.35rem;border-radius:26px;cursor:pointer;
+  font-size:.88rem;font-weight:800;letter-spacing:.04em;
+  background:linear-gradient(135deg,rgba(0,207,255,.22),rgba(121,40,202,.22));
+  border:1.5px solid var(--cyan);color:#fff;
+  box-shadow:0 0 18px rgba(0,207,255,.35),0 0 36px rgba(0,207,255,.12),inset 0 1px 0 rgba(255,255,255,.1);
+  text-shadow:0 0 10px rgba(0,207,255,.7);
+  white-space:nowrap;position:relative;overflow:hidden;
+  transition:all .22s cubic-bezier(.4,0,.2,1);
+  animation:refreshPulse 2.8s ease-in-out infinite;
+}
+.refresh-btn::before{
+  content:'';position:absolute;inset:-1px;border-radius:27px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  z-index:-1;opacity:.35;
+}
+.refresh-btn::after{
+  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
+  animation:sheen 3.5s ease-in-out infinite;
+}
+@keyframes refreshPulse{
+  0%,100%{box-shadow:0 0 18px rgba(0,207,255,.35),0 0 36px rgba(0,207,255,.12),inset 0 1px 0 rgba(255,255,255,.1)}
+  50%{box-shadow:0 0 28px rgba(0,207,255,.65),0 0 55px rgba(0,207,255,.25),inset 0 1px 0 rgba(255,255,255,.15)}
+}
+@keyframes sheen{0%{left:-100%}60%,100%{left:160%}}
+.refresh-btn:hover{
+  background:linear-gradient(135deg,rgba(0,207,255,.35),rgba(121,40,202,.35));
+  box-shadow:0 0 32px rgba(0,207,255,.7),0 0 64px rgba(0,207,255,.3),inset 0 1px 0 rgba(255,255,255,.2);
+  transform:translateY(-1px) scale(1.03);
+}
+.refresh-btn:active{transform:translateY(0) scale(.98)}
+.refresh-btn svg{flex-shrink:0;transition:transform .4s ease;filter:drop-shadow(0 0 4px rgba(0,207,255,.8))}
+.refresh-btn.spinning svg{animation:spin360 1s linear infinite}
+@keyframes spin360{to{transform:rotate(360deg)}}
+
+/* Refresh modal */
+.refresh-modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(7px);
+  display:flex;align-items:center;justify-content:center;z-index:9998;
+  opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+.refresh-modal-overlay.show{opacity:1;pointer-events:all}
+.refresh-modal{
+  background:linear-gradient(135deg,rgba(13,17,30,.97),rgba(20,25,45,.97));
+  border:1px solid var(--border2);border-radius:18px;padding:2rem 2rem 1.6rem;
+  width:min(420px,92vw);
+  box-shadow:0 28px 70px rgba(0,0,0,.65),0 0 0 1px rgba(0,207,255,.06);
+  transform:translateY(14px);transition:transform .25s ease;
+}
+.refresh-modal-overlay.show .refresh-modal{transform:translateY(0)}
+.refresh-modal-icon{
+  width:48px;height:48px;border-radius:14px;margin-bottom:1.1rem;
+  background:linear-gradient(135deg,rgba(0,207,255,.15),rgba(121,40,202,.15));
+  border:1px solid rgba(0,207,255,.25);
+  display:flex;align-items:center;justify-content:center;font-size:1.45rem;
+}
+.refresh-modal-title{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:.4rem}
+.refresh-modal-body{font-size:.82rem;color:var(--text2);line-height:1.65;margin-bottom:1.1rem}
+.refresh-modal-sources{
+  background:rgba(0,0,0,.28);border:1px solid var(--border);border-radius:10px;
+  padding:.75rem 1rem;margin-bottom:1.1rem;
+}
+.refresh-modal-sources p{font-size:.73rem;color:var(--text3);margin-bottom:.45rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.refresh-modal-sources ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.refresh-modal-sources li{font-size:.76rem;color:var(--cyan2);display:flex;align-items:center;gap:.5rem}
+.refresh-modal-sources li::before{content:'›';color:var(--text3)}
+.refresh-modal-warn{
+  display:flex;align-items:flex-start;gap:.55rem;
+  background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);
+  border-radius:9px;padding:.65rem .85rem;margin-bottom:1.2rem;
+  font-size:.76rem;color:#fbbf24;line-height:1.5;
+}
+.refresh-modal-warn span:first-child{font-size:1rem;flex-shrink:0;margin-top:.05rem}
+.refresh-modal-footer{display:flex;gap:.6rem}
+.refresh-modal-btn{
+  flex:1;padding:.5rem;border-radius:9px;font-size:.82rem;font-weight:700;cursor:pointer;transition:var(--transition);
+}
+.refresh-modal-btn.primary{
+  background:linear-gradient(135deg,rgba(0,207,255,.9),rgba(121,40,202,.9));border:none;color:#fff;
+}
+.refresh-modal-btn.primary:hover{opacity:.88}
+.refresh-modal-btn.secondary{background:transparent;border:1px solid var(--border2);color:var(--text3)}
+.refresh-modal-btn.secondary:hover{border-color:var(--border);color:var(--text)}
+
+/* ═══════════════════════════════════════════
+   MAIN
+═══════════════════════════════════════════ */
+main{flex:1;overflow:hidden;display:flex;min-height:0}
+.panel{display:none;flex:1;min-height:0}
+.panel.active{display:flex}
+
+/* ═══════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════ */
+.sidebar{
+  width:320px;flex-shrink:0;
+  background:rgba(6,14,28,.7);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  overflow-y:auto;overflow-x:hidden;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+.sb-section{padding:1.1rem 1.1rem .6rem}
+.sb-label{
+  font-size:.68rem;text-transform:uppercase;letter-spacing:2px;
+  color:var(--text3);font-weight:800;margin-bottom:.85rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.sb-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+/* Profile card */
+.profile-card{
+  background:linear-gradient(135deg,rgba(0,207,255,.05),rgba(121,40,202,.05));
+  border:1px solid var(--border2);border-radius:12px;padding:.9rem;position:relative;overflow:hidden;
+}
+.profile-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent,rgba(0,207,255,.03));
+  pointer-events:none;
+}
+.profile-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem}
+.profile-row label{font-size:.73rem;color:var(--text3)}
+.profile-row span{font-size:.73rem;color:var(--cyan2);font-weight:700}
+.profile-input{
+  width:100%;background:rgba(0,0,0,.3);border:1px solid var(--border);
+  border-radius:8px;padding:.4rem .65rem;color:var(--text);font-size:.78rem;
+  margin-top:.65rem;outline:none;transition:var(--transition);
+}
+.profile-input:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,207,255,.1)}
+.profile-input::placeholder{color:var(--text3)}
+.clear-btn{
+  width:100%;margin-top:.55rem;padding:.38rem;
+  background:rgba(244,63,94,.07);border:1px solid rgba(244,63,94,.2);
+  border-radius:7px;color:var(--red);font-size:.73rem;cursor:pointer;
+  transition:var(--transition);font-weight:600;
+}
+.clear-btn:hover{background:rgba(244,63,94,.12);border-color:rgba(244,63,94,.4)}
+.change-name-btn{
+  width:100%;margin-top:.65rem;padding:.4rem .65rem;
+  background:rgba(0,207,255,.07);border:1px solid rgba(0,207,255,.2);
+  border-radius:8px;color:var(--cyan2);font-size:.78rem;cursor:pointer;
+  transition:var(--transition);font-weight:600;text-align:center;
+}
+.change-name-btn:hover{background:rgba(0,207,255,.12);border-color:rgba(0,207,255,.4)}
+
+/* Name modal */
+.name-modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;z-index:9999;
+  opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+.name-modal-overlay.show{opacity:1;pointer-events:all}
+.name-modal{
+  background:linear-gradient(135deg,rgba(13,17,30,.97),rgba(20,25,45,.97));
+  border:1px solid var(--border2);border-radius:16px;padding:2rem 2rem 1.6rem;
+  width:min(340px,90vw);box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 1px rgba(0,207,255,.08);
+  transform:translateY(12px);transition:transform .25s ease;
+}
+.name-modal-overlay.show .name-modal{transform:translateY(0)}
+.name-modal-title{
+  font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:.3rem;letter-spacing:.02em;
+}
+.name-modal-sub{font-size:.78rem;color:var(--text3);margin-bottom:1.1rem;line-height:1.5}
+.name-modal-input{
+  width:100%;background:rgba(0,0,0,.35);border:1px solid var(--border);
+  border-radius:9px;padding:.55rem .75rem;color:var(--text);font-size:.85rem;
+  outline:none;transition:var(--transition);box-sizing:border-box;
+}
+.name-modal-input:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,207,255,.12)}
+.name-modal-input::placeholder{color:var(--text3)}
+.name-modal-field{margin-top:.65rem}
+.name-modal-field label{display:block;font-size:.73rem;color:var(--text3);margin-bottom:.3rem;font-weight:600;letter-spacing:.02em}
+.name-modal-footer{display:flex;gap:.6rem;margin-top:.9rem}
+.name-modal-btn{
+  flex:1;padding:.5rem;border-radius:8px;font-size:.8rem;font-weight:700;cursor:pointer;transition:var(--transition);
+}
+.name-modal-btn.primary{
+  background:linear-gradient(135deg,var(--cyan),var(--purple));border:none;color:#fff;
+}
+.name-modal-btn.primary:hover{opacity:.88}
+.name-modal-btn.secondary{
+  background:transparent;border:1px solid var(--border2);color:var(--text3);
+}
+.name-modal-btn.secondary:hover{border-color:var(--border);color:var(--text)}
+
+/* Aggregate mini gauge in sidebar */
+.agg-gauge{display:flex;align-items:center;gap:.9rem;margin-top:.75rem}
+.mini-gauge{position:relative;width:68px;height:68px;flex-shrink:0}
+.mini-gauge svg{transform:rotate(-90deg)}
+.mini-gauge .gauge-val{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:.88rem;font-weight:900;color:var(--cyan);
+}
+.agg-info{flex:1}
+.agg-label{font-size:.75rem;color:var(--text3);font-weight:600;letter-spacing:.03em}
+.agg-rating{font-size:1rem;color:var(--green);font-weight:700;margin-top:.25rem;line-height:1.3}
+
+/* Countdown widget */
+.countdown-card{
+  background:linear-gradient(135deg,rgba(121,40,202,.1),rgba(0,207,255,.05));
+  border:1px solid rgba(121,40,202,.3);border-radius:12px;padding:.85rem;
+}
+.cd-title{font-size:.72rem;color:var(--purple2);font-weight:700;margin-bottom:.55rem;display:flex;align-items:center;gap:.35rem}
+.cd-boxes{display:flex;gap:.5rem}
+.cd-box{
+  flex:1;background:rgba(0,0,0,.4);border:1px solid rgba(121,40,202,.25);
+  border-radius:8px;padding:.65rem .25rem;text-align:center;
+}
+.cd-num{font-size:1.6rem;font-weight:900;color:var(--cyan);line-height:1}
+.cd-unit{font-size:.68rem;color:var(--text3);margin-top:.25rem;text-transform:uppercase;letter-spacing:.5px}
+
+/* Sidebar buttons */
+.qbtn{
+  display:flex;align-items:center;gap:.8rem;width:100%;text-align:left;
+  padding:.75rem .85rem;
+  background:transparent;border:none;border-radius:11px;
+  color:var(--text2);font-size:.92rem;font-weight:500;
+  cursor:pointer;transition:var(--transition);margin-bottom:.2rem;
+}
+.qbtn:hover{
+  background:rgba(0,207,255,.07);
+  color:var(--text);transform:translateX(4px);
+}
+.qbtn.active-btn{
+  background:rgba(0,207,255,.1);border:1px solid rgba(0,207,255,.2);color:var(--cyan);
+}
+.qbtn-icon{font-size:1.2rem;flex-shrink:0;width:28px;text-align:center}
+.qbtn-text{flex:1;line-height:1.3}
+.qbtn-arrow{color:var(--text3);font-size:.75rem;transition:var(--transition);flex-shrink:0}
+.qbtn:hover .qbtn-arrow{color:var(--cyan);transform:translateX(3px)}
+
+/* Model info card at bottom of sidebar */
+.sb-model-card{
+  margin:auto 1.1rem 1.1rem;
+  background:rgba(0,0,0,.35);border:1px solid var(--border);
+  border-radius:12px;padding:.85rem 1rem;
+}
+.sb-model-label{font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:700;margin-bottom:.4rem}
+.sb-model-name{font-size:1rem;font-weight:800;color:var(--cyan);font-family:monospace;margin-bottom:.35rem}
+.sb-model-status{display:flex;align-items:center;gap:.4rem;font-size:.73rem;color:var(--text3)}
+.sb-model-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s infinite;flex-shrink:0}
+
+/* ═══════════════════════════════════════════
+   CHAT PANEL
+═══════════════════════════════════════════ */
+#panel-chat{flex-direction:row}
+.chat-main{flex:1;display:flex;flex-direction:column;min-width:0}
+
+/* Messages */
+#messages{
+  flex:1;overflow-y:auto;padding:1.25rem 1.5rem;
+  display:flex;flex-direction:column;gap:1rem;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+}
+#messages::-webkit-scrollbar{width:4px}
+#messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* Welcome screen */
+#welcome{
+  margin:auto;text-align:center;max-width:520px;padding:2rem 1rem;
+  animation:fadeUp .5s ease-out;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.welcome-glow{
+  width:80px;height:80px;border-radius:20px;margin:0 auto 1.25rem;
+  background:linear-gradient(135deg,#003b6e,#0ea5e9,#00cfff);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;font-weight:900;color:#fff;
+  box-shadow:0 0 40px rgba(0,207,255,.5),0 0 80px rgba(0,207,255,.15);
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.welcome-title{
+  font-size:1.6rem;font-weight:800;margin-bottom:.5rem;
+  background:linear-gradient(135deg,var(--text),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.welcome-sub{color:var(--text2);font-size:.88rem;line-height:1.6;margin-bottom:1.25rem}
+.welcome-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
+.wchip{
+  padding:.35rem .85rem;border-radius:20px;font-size:.76rem;cursor:pointer;
+  background:rgba(0,207,255,.08);border:1px solid rgba(0,207,255,.2);
+  color:var(--cyan2);transition:var(--transition);
+}
+.wchip:hover{background:rgba(0,207,255,.18);border-color:var(--cyan);box-shadow:0 0 10px rgba(0,207,255,.2)}
+
+/* Messages */
+.msg{
+  display:flex;gap:.7rem;max-width:82%;
+  animation:msgIn .3s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes msgIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.msg.bot{align-self:flex-start}
+
+.avatar{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;font-weight:800;
+}
+.msg.bot .avatar{
+  background:linear-gradient(135deg,#003b6e,#00cfff);
+  box-shadow:0 0 14px rgba(0,207,255,.4);
+  font-size:.72rem;
+}
+.msg.user .avatar{background:linear-gradient(135deg,#1e1b4b,#7928ca);box-shadow:0 0 14px rgba(121,40,202,.4)}
+
+.bubble-wrap{display:flex;flex-direction:column}
+.msg.user .bubble-wrap{align-items:flex-end}
+
+.bubble{
+  padding:.8rem 1.05rem;border-radius:var(--r);
+  line-height:1.65;font-size:.875rem;word-break:break-word;position:relative;
+}
+.msg.bot .bubble{
+  background:linear-gradient(135deg,var(--s2),var(--s3));
+  border:1px solid var(--border2);border-top-left-radius:4px;
+  box-shadow:0 4px 20px rgba(0,0,0,.3),inset 0 1px 0 rgba(0,207,255,.05);
+}
+.msg.user .bubble{
+  background:linear-gradient(135deg,#1e1b4b,#2d1b69,#3730a3);
+  border:1px solid rgba(121,40,202,.4);border-top-right-radius:4px;
+  box-shadow:0 4px 20px rgba(121,40,202,.2);
+}
+
+/* Markdown in bubbles */
+.bubble strong{color:var(--cyan2);font-weight:700}
+.bubble em{color:var(--gold);font-style:normal;font-weight:600}
+.bubble code{
+  background:rgba(0,207,255,.1);border:1px solid rgba(0,207,255,.2);
+  border-radius:5px;padding:.1rem .4rem;font-family:'Cascadia Code',monospace;font-size:.8rem;
+}
+.bubble pre{
+  background:rgba(0,0,0,.5);border:1px solid var(--border);border-radius:10px;
+  padding:.75rem 1rem;overflow-x:auto;margin:.5rem 0;font-size:.8rem;
+}
+.bubble ul,.bubble ol{padding-left:1.4rem;margin:.35rem 0}
+.bubble li{margin:.2rem 0}
+.bubble h3,.bubble h4{color:var(--cyan2);margin:.5rem 0 .25rem;font-size:.95rem}
+.bubble blockquote{
+  border-left:3px solid var(--cyan);padding-left:.75rem;
+  color:var(--text2);margin:.4rem 0;background:rgba(0,207,255,.04);
+  border-radius:0 6px 6px 0;padding:.4rem .75rem;
+}
+.bubble table{border-collapse:collapse;width:100%;margin:.5rem 0;font-size:.8rem}
+.bubble th{background:rgba(0,207,255,.12);padding:.35rem .6rem;border:1px solid var(--border);color:var(--cyan2)}
+.bubble td{padding:.3rem .6rem;border:1px solid var(--border)}
+
+.msg-actions{
+  display:flex;gap:.3rem;margin-top:.3rem;opacity:0;transition:var(--transition);
+}
+.msg.bot:hover .msg-actions{opacity:1}
+.action-btn{
+  padding:.15rem .45rem;border-radius:5px;border:1px solid var(--border);
+  background:rgba(0,0,0,.3);color:var(--text3);font-size:.68rem;cursor:pointer;
+  transition:var(--transition);
+}
+.action-btn:hover{color:var(--cyan);border-color:var(--cyan)}
+
+/* Typing indicator */
+#typing{
+  display:none;align-self:flex-start;align-items:center;gap:.7rem;padding:.3rem 0;
+}
+#typing.show{display:flex;animation:msgIn .3s ease-out}
+.typing-bubble{
+  display:flex;align-items:center;gap:.3rem;
+  background:var(--s3);border:1px solid var(--border2);border-radius:20px;
+  padding:.5rem .9rem;
+}
+.typing-dots span{
+  display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--cyan);animation:tdot 1s ease-in-out infinite;
+}
+.typing-dots span:nth-child(2){animation-delay:.15s}
+.typing-dots span:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+.typing-label{font-size:.72rem;color:var(--text3);margin-left:.2rem}
+
+/* Input area */
+.input-wrap{
+  padding:.75rem 1.5rem 1rem;
+  background:rgba(6,14,28,.9);backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);flex-shrink:0;
+}
+.input-chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem}
+.ichip{
+  padding:.28rem .7rem;border-radius:16px;font-size:.72rem;cursor:pointer;
+  background:rgba(121,40,202,.08);border:1px solid rgba(121,40,202,.2);
+  color:var(--purple2);transition:var(--transition);white-space:nowrap;
+}
+.ichip:hover{background:rgba(121,40,202,.18);border-color:var(--purple2)}
+.input-row{display:flex;gap:.6rem;align-items:flex-end}
+#chat-input{
+  flex:1;background:var(--s2);border:1px solid var(--border);
+  border-radius:14px;padding:.7rem 1.1rem;color:var(--text);font-size:.875rem;
+  resize:none;outline:none;max-height:120px;min-height:48px;
+  font-family:inherit;line-height:1.5;transition:var(--transition);
+}
+#chat-input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,207,255,.08)}
+#chat-input::placeholder{color:var(--text3)}
+.ibtn{
+  width:48px;height:48px;border-radius:13px;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;
+  transition:var(--transition);flex-shrink:0;
+}
+#send-btn{background:linear-gradient(135deg,#0369a1,#00cfff);color:#fff;box-shadow:0 4px 14px rgba(0,207,255,.3)}
+#send-btn:hover{transform:scale(1.06);box-shadow:0 6px 20px rgba(0,207,255,.45)}
+#send-btn:disabled{opacity:.4;transform:none;cursor:not-allowed;box-shadow:none}
+#voice-btn{background:var(--s2);border:1px solid var(--border);color:var(--text3)}
+#voice-btn:hover{border-color:var(--purple2);color:var(--purple2)}
+#voice-btn.on{background:rgba(244,63,94,.1);border-color:var(--red);color:var(--red);animation:blink 1s infinite}
+
+/* ═══════════════════════════════════════════
+   MERIT PANEL
+═══════════════════════════════════════════ */
+#panel-merit{
+  overflow:hidden;padding:1.5rem;gap:1.25rem;align-content:flex-start;
+  justify-content:center;
+}
+
+.merit-grid{
+  display:grid;
+  grid-template-columns:minmax(380px,1.1fr) minmax(340px,1fr) minmax(300px,.9fr);
+  gap:1.25rem;width:100%;height:100%;align-items:stretch;
+}
+.mcard{
+  background:linear-gradient(135deg,var(--s2),var(--s3));
+  border:1px solid var(--border2);border-radius:16px;padding:1.5rem;
+  overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+  min-width:0;display:flex;flex-direction:column;
+}
+/* Calculator card inner layout — push button to bottom */
+#mcalc,#mrev{display:flex;flex-direction:column;flex:1}
+#mcalc .calc-btn,#mrev .calc-btn{margin-top:auto;padding-top:1.2rem}
+
+/* Quick-ref cutoff table */
+.cutoff-table{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:.5rem}
+.cutoff-table th{
+  background:rgba(0,207,255,.12);color:var(--cyan2);font-weight:800;
+  padding:.6rem .9rem;border:1px solid var(--border);text-align:left;
+  font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;
+}
+.cutoff-table td{padding:.55rem .9rem;border:1px solid var(--border);color:var(--text);font-size:.92rem}
+.cutoff-table td:first-child{color:var(--text);font-weight:500}
+.cutoff-table td:nth-child(2){color:var(--text2);font-size:.85rem}
+.cutoff-table tr:hover td{background:rgba(0,207,255,.06);color:var(--cyan2)}
+.cutoff-bar{height:4px;border-radius:2px;background:var(--border);margin-top:.25rem;overflow:hidden}
+.cutoff-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--cyan),var(--blue))}
+
+/* Merit formula box */
+.formula-box{
+  background:rgba(0,0,0,.4);border:1px solid var(--border2);
+  border-radius:10px;padding:1rem 1.2rem;font-family:monospace;
+  font-size:.98rem;color:var(--cyan2);line-height:2.2;margin:.7rem 0;
+}
+.tip-row{
+  display:flex;align-items:flex-start;gap:.65rem;
+  padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:.9rem;color:var(--text2);
+}
+.tip-row:last-child{border-bottom:none}
+.tip-icon{font-size:1.15rem;flex-shrink:0;margin-top:.05rem}
+
+@media(max-width:1100px){
+  .merit-grid{grid-template-columns:minmax(340px,1.2fr) minmax(300px,1fr)}
+  .merit-ref-card:last-child{display:none}
+}
+@media(max-width:750px){
+  .merit-grid{grid-template-columns:1fr}
+}
+.mcard-title{
+  font-size:1.05rem;font-weight:800;margin-bottom:1.1rem;
+  background:linear-gradient(90deg,var(--cyan),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  display:flex;align-items:center;gap:.4rem;
+}
+.mcard-title::before{content:'';display:inline-block;width:3px;height:16px;background:var(--cyan);border-radius:2px;flex-shrink:0;-webkit-text-fill-color:unset}
+
+.frow{margin-bottom:1.1rem}
+.frow label{
+  display:block;font-size:.82rem;color:var(--text3);margin-bottom:.45rem;
+  font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+}
+.finput{
+  width:100%;background:rgba(0,0,0,.3);border:1px solid var(--border);
+  border-radius:10px;padding:.75rem 1rem;color:var(--text);font-size:1rem;
+  outline:none;transition:var(--transition);
+}
+.finput:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,207,255,.08)}
+.finput::placeholder{color:var(--text3)}
+.frow-split{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.chk-row{display:flex;align-items:center;gap:.7rem;margin-top:.75rem;cursor:pointer;
+  background:rgba(0,207,255,.05);border:1px solid var(--border);border-radius:9px;padding:.65rem .9rem}
+.chk-row input{width:18px;height:18px;accent-color:var(--cyan);cursor:pointer;flex-shrink:0}
+.chk-row span{font-size:.88rem;color:var(--text2)}
+
+.calc-btn{
+  width:100%;padding:.9rem;border:none;border-radius:12px;cursor:pointer;
+  background:linear-gradient(135deg,#0369a1,#00cfff);color:#fff;
+  font-size:1rem;font-weight:800;margin-top:.9rem;transition:var(--transition);
+  letter-spacing:.4px;
+}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,207,255,.35)}
+.calc-btn.purple{background:linear-gradient(135deg,#5b21b6,#7928ca)}
+.calc-btn.purple:hover{box-shadow:0 8px 24px rgba(121,40,202,.35)}
+
+/* Aggregate Result Display */
+#merit-result{display:none;margin-top:1rem}
+.agg-display{
+  display:flex;align-items:center;gap:1.25rem;
+  background:linear-gradient(135deg,rgba(0,207,255,.07),rgba(121,40,202,.07));
+  border:1px solid var(--border2);border-radius:14px;padding:1.1rem 1.25rem;
+  margin-bottom:1rem;
+}
+.gauge-wrap{position:relative;width:96px;height:96px;flex-shrink:0}
+.gauge-wrap svg{transform:rotate(-90deg);width:96px;height:96px}
+.gauge-center{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+}
+.gauge-num{font-size:1.5rem;font-weight:900;color:var(--cyan)}
+.gauge-pct{font-size:.65rem;color:var(--text3);margin-top:-2px}
+.agg-info2 h3{
+  font-size:1.5rem;font-weight:900;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.agg-rating2{font-size:.8rem;color:var(--green);font-weight:700;margin-bottom:.35rem}
+.agg-breakdown{display:flex;gap:.5rem;flex-wrap:wrap}
+.bd-pill{
+  padding:.18rem .6rem;border-radius:10px;font-size:.7rem;font-weight:700;
+  background:rgba(0,207,255,.1);border:1px solid rgba(0,207,255,.2);color:var(--cyan2);
+}
+
+.prog-result-section h3{
+  font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--text3);
+  font-weight:700;margin-bottom:.5rem;margin-top:.75rem;
+}
+.prog-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.5rem .75rem;border-radius:10px;margin-bottom:.3rem;
+  background:rgba(0,0,0,.25);border:1px solid var(--border);
+  transition:var(--transition);
+}
+.prog-row:hover{border-color:var(--border2);background:rgba(0,207,255,.04)}
+.prog-row-left .prog-name{font-size:.8rem;font-weight:700;color:var(--text)}
+.prog-row-left .prog-school{font-size:.7rem;color:var(--text3);margin-top:.1rem}
+.status-pill{padding:.18rem .6rem;border-radius:10px;font-size:.7rem;font-weight:700;flex-shrink:0}
+.status-pill.likely{background:rgba(16,185,129,.12);color:var(--green);border:1px solid rgba(16,185,129,.25)}
+.status-pill.borderline{background:rgba(251,191,36,.1);color:var(--gold);border:1px solid rgba(251,191,36,.2)}
+.status-pill.close{background:rgba(0,207,255,.08);color:var(--cyan);border:1px solid var(--border2)}
+
+.advice-panel{
+  background:rgba(0,207,255,.05);border:1px solid var(--border2);
+  border-radius:10px;padding:.75rem 1rem;font-size:.8rem;color:var(--text2);
+  line-height:1.6;margin-top:.75rem;
+}
+.advice-panel strong{color:var(--cyan2)}
+
+.discuss-btn{
+  width:100%;margin-top:1rem;padding:.65rem;border:none;border-radius:11px;
+  background:linear-gradient(135deg,#065f46,#10b981);color:#fff;
+  font-size:.85rem;font-weight:800;cursor:pointer;transition:var(--transition);
+}
+.discuss-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(16,185,129,.3)}
+
+/* ─── Reverse Calc Tab ─────────────────── */
+.merit-tabs{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.3rem}
+.mtab{
+  padding:.75rem 1rem;border-radius:12px;font-size:.88rem;font-weight:700;
+  cursor:pointer;text-align:center;transition:all .25s cubic-bezier(.4,0,.2,1);
+  border:2px solid var(--border2);
+  background:rgba(0,0,0,.25);
+  color:var(--text2);
+  letter-spacing:.2px;
+}
+.mtab:hover{
+  background:rgba(0,207,255,.08);
+  color:var(--text);
+  border-color:var(--cyan);
+  transform:translateY(-1px);
+}
+.mtab.active{
+  background:linear-gradient(135deg,#0e3a5c,#0c2d52);
+  color:#fff;
+  border-color:var(--cyan);
+  box-shadow:0 0 18px rgba(0,207,255,.35),inset 0 1px 0 rgba(0,207,255,.2);
+  text-shadow:0 0 10px rgba(0,207,255,.5);
+}
+
+/* Student type toggle (FSc / A-Level) */
+.stype-tabs{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.1rem;
+  background:rgba(0,0,0,.3);padding:.35rem;border-radius:12px;border:1px solid var(--border)}
+.stype-btn{
+  padding:.55rem .75rem;border-radius:9px;font-size:.83rem;font-weight:700;
+  cursor:pointer;text-align:center;transition:all .25s cubic-bezier(.4,0,.2,1);
+  border:none;background:transparent;color:var(--text3);letter-spacing:.2px;
+}
+.stype-btn:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.stype-btn.active{
+  background:linear-gradient(135deg,rgba(0,207,255,.18),rgba(121,40,202,.18));
+  border:1px solid var(--cyan);
+  color:#fff;
+  box-shadow:0 0 14px rgba(0,207,255,.25),inset 0 1px 0 rgba(0,207,255,.15);
+  text-shadow:0 0 8px rgba(0,207,255,.4);
+}
+
+/* ═══════════════════════════════════════════
+   PROGRAMS PANEL
+═══════════════════════════════════════════ */
+#panel-programs{padding:1.5rem;overflow-y:auto;flex-direction:column;gap:1rem;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+
+.programs-bar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.psearch{
+  flex:1;min-width:200px;background:var(--s2);border:1px solid var(--border);
+  border-radius:11px;padding:.55rem 1rem;color:var(--text);font-size:.85rem;
+  outline:none;transition:var(--transition);
+}
+.psearch:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,207,255,.08)}
+.psearch::placeholder{color:var(--text3)}
+.pselect{
+  background:var(--s2);border:1px solid var(--border);border-radius:11px;
+  padding:.55rem .85rem;color:var(--text);font-size:.8rem;outline:none;cursor:pointer;
+}
+.pselect:focus{border-color:var(--cyan)}
+
+.stat-strip{display:flex;gap:.75rem;flex-wrap:wrap}
+.stat-card{
+  flex:1;min-width:110px;
+  background:linear-gradient(135deg,rgba(0,207,255,.07),rgba(0,207,255,.02));
+  border:1px solid var(--border2);border-radius:12px;padding:.75rem 1rem;text-align:center;
+}
+.stat-num{
+  font-size:1.4rem;font-weight:900;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.stat-lbl{font-size:.68rem;color:var(--text3);margin-top:.15rem;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+
+.prog-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.85rem}
+.prog-card{
+  background:linear-gradient(135deg,var(--s2),var(--s3));
+  border:1px solid var(--border);border-radius:14px;padding:1.2rem;
+  transition:var(--transition);cursor:pointer;position:relative;overflow:hidden;
+}
+.prog-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent,rgba(0,207,255,.03));
+  pointer-events:none;opacity:0;transition:var(--transition);
+}
+.prog-card:hover{border-color:var(--border2);transform:translateY(-3px);
+  box-shadow:0 8px 30px rgba(0,207,255,.1);}
+.prog-card:hover::before{opacity:1}
+.pc-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.pc-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem}
+.tag{padding:.18rem .55rem;border-radius:6px;font-size:.75rem;font-weight:700}
+.tag.school{background:rgba(0,207,255,.1);color:var(--cyan2);border:1px solid var(--border2)}
+.tag.deg{background:rgba(251,191,36,.08);color:var(--gold);border:1px solid rgba(251,191,36,.2)}
+.tag.yrs{background:rgba(16,185,129,.08);color:var(--green);border:1px solid rgba(16,185,129,.2)}
+.pc-cutoff{font-size:.88rem;color:var(--text3)}
+.pc-cutoff span{color:var(--cyan2);font-weight:800}
+.pc-seats{font-size:.82rem;color:var(--text3);margin-top:.25rem}
+.pc-bar{height:3px;border-radius:2px;background:var(--border);margin-top:.7rem;overflow:hidden}
+.pc-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--cyan),var(--blue));transition:.6s ease}
+
+/* ═══════════════════════════════════════════
+   NET GUIDE PANEL
+═══════════════════════════════════════════ */
+#panel-guide{padding:1.5rem;overflow-y:auto;flex-direction:column;gap:1.25rem;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+
+.guide-hero{
+  background:linear-gradient(135deg,rgba(0,207,255,.08),rgba(121,40,202,.08));
+  border:1px solid var(--border2);border-radius:16px;padding:1.5rem;
+  display:flex;align-items:center;gap:1.5rem;
+}
+.guide-hero-icon{font-size:3rem;flex-shrink:0}
+.guide-hero h2{
+  font-size:1.25rem;font-weight:800;margin-bottom:.35rem;
+  background:linear-gradient(90deg,var(--cyan),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.guide-hero p{font-size:.95rem;color:var(--text2);line-height:1.6}
+
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.guide-card{
+  background:linear-gradient(135deg,var(--s2),var(--s3));
+  border:1px solid var(--border);border-radius:14px;padding:1.3rem;
+}
+.gc-header{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem}
+.gc-icon{
+  width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;flex-shrink:0;
+}
+.gc-title{font-size:1rem;font-weight:800;color:var(--text)}
+.gc-body{font-size:.9rem;color:var(--text2);line-height:1.75}
+.gc-body li{margin:.35rem 0;list-style:none;padding-left:1.2rem;position:relative}
+.gc-body li::before{content:'›';position:absolute;left:0;color:var(--cyan);font-size:1rem}
+.gc-body strong{color:var(--cyan2)}
+
+/* NET type rows inside guide */
+.net-type-row{
+  display:flex;align-items:flex-start;gap:.6rem;
+  padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.88rem;
+}
+.net-type-row:last-child{border-bottom:none}
+.net-type-badge{
+  font-size:.72rem;font-weight:800;padding:.15rem .5rem;border-radius:6px;
+  white-space:nowrap;flex-shrink:0;margin-top:.1rem;
+}
+
+.subject-bars{display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem}
+.subj-row{display:flex;align-items:center;gap:.75rem}
+.subj-name{font-size:.85rem;color:var(--text2);width:110px;flex-shrink:0}
+.subj-track{flex:1;height:8px;background:rgba(0,0,0,.4);border-radius:4px;overflow:hidden}
+.subj-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--cyan),var(--blue))}
+.subj-marks{font-size:.82rem;color:var(--cyan2);font-weight:700;width:36px;text-align:right}
+
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:.85rem;padding-bottom:.85rem;position:relative}
+.tl-item:not(:last-child)::before{
+  content:'';position:absolute;left:15px;top:30px;bottom:0;
+  width:1px;background:var(--border);
+}
+.tl-dot{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;
+  background:linear-gradient(135deg,var(--s3),var(--s4));border:1px solid var(--border2);
+  color:var(--cyan);
+}
+.tl-content{}
+.tl-title{font-size:.92rem;font-weight:700;color:var(--text)}
+.tl-desc{font-size:.82rem;color:var(--text3);margin-top:.2rem;line-height:1.5}
+
+/* ═══════════════════════════════════════════
+   CHECKLIST PANEL
+═══════════════════════════════════════════ */
+#panel-check{padding:1.5rem;overflow:hidden;flex-direction:column;gap:1.25rem;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+
+.check-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;flex:1;min-height:0}
+.check-card{
+  background:linear-gradient(135deg,var(--s2),var(--s3));
+  border:1px solid var(--border);border-radius:14px;padding:1.1rem;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.check-card>div:last-child{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.check-card-title{
+  font-size:1.15rem;font-weight:800;margin-bottom:.85rem;
+  color:var(--cyan2);display:flex;align-items:center;gap:.5rem;
+}
+.check-item{
+  display:flex;align-items:flex-start;gap:.65rem;
+  padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.04);
+  cursor:pointer;transition:var(--transition);
+}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{opacity:.85}
+.check-box{
+  width:20px;height:20px;border-radius:5px;flex-shrink:0;margin-top:2px;
+  border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;
+  transition:var(--transition);
+}
+.check-item.done .check-box{background:var(--green);border-color:var(--green)}
+.check-tick{color:#fff;font-size:.75rem;opacity:0;transition:var(--transition)}
+.check-item.done .check-tick{opacity:1}
+.check-text{font-size:1.05rem;color:var(--text2);line-height:1.5;transition:var(--transition)}
+.check-item.done .check-text{text-decoration:line-through;color:var(--text3)}
+
+.progress-ring-wrap{
+  background:linear-gradient(135deg,rgba(0,207,255,.07),rgba(121,40,202,.07));
+  border:1px solid var(--border2);border-radius:16px;padding:1.25rem;
+  display:flex;align-items:center;gap:1.25rem;
+}
+#prog-ring-svg{transform:rotate(-90deg);width:80px;height:80px}
+.prog-ring-info h3{
+  font-size:1.4rem;font-weight:900;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.prog-ring-info p{font-size:.78rem;color:var(--text2);margin-top:.2rem}
+#check-count{font-size:.75rem;color:var(--green);font-weight:700;margin-top:.3rem}
+
+/* ═══════════════════════════════════════════
+   SCROLLBARS GLOBAL
+═══════════════════════════════════════════ */
+*::-webkit-scrollbar{width:4px;height:4px}
+*::-webkit-scrollbar-track{background:transparent}
+*::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+#toast{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;
+  padding:.6rem 1.1rem;border-radius:11px;font-size:.8rem;font-weight:700;
+  opacity:0;transform:translateY(8px) scale(.97);transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  pointer-events:none;max-width:300px;
+}
+#toast.show{opacity:1;transform:none}
+
+/* ─── Responsive ─────────────────────────── */
+@media(max-width:800px){.sidebar{display:none}.header-center{display:none}}
+</style>
+</head>
+<body>
+
+<!-- Ambient orbs -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div id="app">
+
+<!-- ══════════════════════ HEADER ══════════════════════ -->
+<header>
+  <div class="logo">
+    <div class="logo-gem">NUST</div>
+    <div class="logo-text">
+      <h1>Admission Helper</h1>
+    </div>
+  </div>
+
+  <div class="header-center">
+    <button class="tab active" onclick="switchTab('chat')" id="tab-chat">💬 Chat</button>
+    <button class="tab" onclick="switchTab('merit')" id="tab-merit">📊 Merit</button>
+    <button class="tab" onclick="switchTab('programs')" id="tab-programs">🎓 Programs</button>
+    <button class="tab" onclick="switchTab('guide')" id="tab-guide">📚 NET Guide</button>
+    <button class="tab" onclick="switchTab('check')" id="tab-check">✅ Checklist</button>
+  </div>
+
+  <div class="header-right">
+    <button class="refresh-btn" id="refresh-data-btn" onclick="showRefreshModal()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+      </svg>
+      Refresh Data
+    </button>
+  </div>
+</header>
+
+<!-- Refresh Data Modal -->
+<div class="refresh-modal-overlay" id="refresh-modal-overlay" onclick="if(event.target===this)closeRefreshModal()">
+  <div class="refresh-modal">
+    <div class="refresh-modal-icon">🌐</div>
+    <div class="refresh-modal-title">Refresh Admission Data</div>
+    <div class="refresh-modal-body">
+      This will fetch the latest admission information directly from NUST's official websites — including updated merit cutoffs, NET schedules, program lists, and fee structures.
+    </div>
+    <div class="refresh-modal-sources">
+      <p>Sources to be scraped</p>
+      <ul>
+        <li>ugadmissions.nust.edu.pk — NET schedule &amp; registration</li>
+        <li>nust.edu.pk/admissions — merit &amp; eligibility info</li>
+        <li>nust.edu.pk/schools — program &amp; school details</li>
+      </ul>
+    </div>
+    <div class="refresh-modal-warn">
+      <span>⏱</span>
+      <span>This process can take <strong>30 – 90 seconds</strong> depending on your connection. The chatbot will continue to work with cached data while the refresh runs in the background.</span>
+    </div>
+    <div class="refresh-modal-footer">
+      <button class="refresh-modal-btn secondary" onclick="closeRefreshModal()">Cancel</button>
+      <button class="refresh-modal-btn primary" id="confirm-refresh-btn" onclick="confirmRefresh()">Start Refresh</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ MAIN ══════════════════════ -->
+<main>
+
+<!-- ═══ CHAT PANEL ═══════════════════════════════════ -->
+<div class="panel active" id="panel-chat">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <!-- Profile + Countdown -->
+    <div class="sb-section">
+      <div class="sb-label">Your Profile</div>
+      <div class="profile-card">
+        <div class="profile-row"><label>Name</label><span id="s-name">—</span></div>
+        <div class="profile-row"><label>NET Score</label><span id="s-net">—</span></div>
+        <div class="agg-gauge">
+          <div class="mini-gauge">
+            <svg viewBox="0 0 54 54">
+              <circle cx="27" cy="27" r="22" fill="none" stroke="rgba(0,207,255,.1)" stroke-width="5"/>
+              <circle id="mini-gauge-fill" cx="27" cy="27" r="22" fill="none"
+                stroke="url(#gaugeGrad)" stroke-width="5"
+                stroke-dasharray="138.2" stroke-dashoffset="138.2"
+                stroke-linecap="round" style="transition:stroke-dashoffset .8s ease"/>
+              <defs>
+                <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#00cfff"/>
+                  <stop offset="100%" stop-color="#7928ca"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="gauge-val" id="mini-gauge-val">—</div>
+          </div>
+          <div class="agg-info">
+            <div class="agg-label">Aggregate</div>
+            <div class="agg-rating" id="sb-rating">Not calculated</div>
+          </div>
+        </div>
+        <button class="change-name-btn" onclick="showNameModal()">✎ Edit Info</button>
+      </div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-label">NET Registration Deadline</div>
+      <div class="countdown-card">
+        <div class="cd-title" id="cd-title">🗓️ Loading…</div>
+        <div class="cd-boxes">
+          <div class="cd-box"><div class="cd-num" id="cd-days">—</div><div class="cd-unit">Days</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-hrs">—</div><div class="cd-unit">Hrs</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-min">—</div><div class="cd-unit">Min</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-sec">—</div><div class="cd-unit">Sec</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMISSION -->
+    <div class="sb-section">
+      <div class="sb-label">Admission</div>
+      <button class="qbtn" onclick="askQuick('How do I register for the NUST NET exam? Walk me through the complete registration process step by step.')">
+        <span class="qbtn-icon">📝</span><span class="qbtn-text">NET Entry Test</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('Explain the NUST merit/aggregate formula in detail with a worked example.')">
+        <span class="qbtn-icon">📊</span><span class="qbtn-text">Merit &amp; Aggregate</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('What are the important NUST admission deadlines and dates for 2026?')">
+        <span class="qbtn-icon">📅</span><span class="qbtn-text">Deadlines &amp; Dates</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('What documents do I need for NUST admission? Give me a complete checklist.')">
+        <span class="qbtn-icon">📋</span><span class="qbtn-text">Documents Required</span><span class="qbtn-arrow">›</span>
+      </button>
+    </div>
+
+    <!-- PROGRAMS -->
+    <div class="sb-section">
+      <div class="sb-label">Programs</div>
+      <button class="qbtn" onclick="askQuick('Tell me about all engineering programs at NUST — SMME, SCME, SCEE. What are the cutoffs and career prospects?')">
+        <span class="qbtn-icon">⚙️</span><span class="qbtn-text">Engineering</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('What CS, AI, SE and IT programs does SEECS offer? List all with merit cutoffs and what makes each unique.')">
+        <span class="qbtn-icon">💻</span><span class="qbtn-text">CS &amp; IT (SEECS)</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('Tell me about NBS business programs — BBA and Accounting & Finance. What are the cutoffs, fee and career outcomes?')">
+        <span class="qbtn-icon">📈</span><span class="qbtn-text">Business (NBS)</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('Tell me about ASAB Biotechnology and Bioinformatics programs. Also tell me about SNS natural sciences programs.')">
+        <span class="qbtn-icon">🧬</span><span class="qbtn-text">Medical Sciences</span><span class="qbtn-arrow">›</span>
+      </button>
+    </div>
+
+    <!-- CAMPUS LIFE -->
+    <div class="sb-section">
+      <div class="sb-label">Campus Life</div>
+      <button class="qbtn" onclick="askQuick('Tell me about NUST hostels — availability, cost, facilities, and how to apply for accommodation.')">
+        <span class="qbtn-icon">🏠</span><span class="qbtn-text">Campus &amp; Hostels</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('What is the fee structure at NUST for different schools? How much does each semester cost?')">
+        <span class="qbtn-icon">💳</span><span class="qbtn-text">Fee Structure</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('What scholarships are available at NUST? Tell me about merit scholarships, need-based aid and HEC scholarships.')">
+        <span class="qbtn-icon">🏆</span><span class="qbtn-text">Scholarships</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('What student societies and clubs are at NUST? Tell me about IEEE, ACM, sports, arts, and entrepreneurship clubs.')">
+        <span class="qbtn-icon">🎭</span><span class="qbtn-text">Societies &amp; Clubs</span><span class="qbtn-arrow">›</span>
+      </button>
+    </div>
+
+    <!-- COMPARE -->
+    <div class="sb-section">
+      <div class="sb-label">Compare</div>
+      <button class="qbtn" onclick="askQuick('Compare NUST vs FAST vs GIKI for Computer Science — rankings, merit cutoffs, fee, campus, job placements and which is best.')">
+        <span class="qbtn-icon">⚖️</span><span class="qbtn-text">NUST vs FAST vs GIKI</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('Compare CS vs Software Engineering at SEECS NUST — curriculum differences, career paths, cutoffs and which one to choose.')">
+        <span class="qbtn-icon">🤔</span><span class="qbtn-text">CS vs SE at SEECS</span><span class="qbtn-arrow">›</span>
+      </button>
+      <button class="qbtn" onclick="askQuick('Compare all SEECS programs: CS, AI, SE, CE, EE and IT — which has the best career prospects and what are the differences?')">
+        <span class="qbtn-icon">🔀</span><span class="qbtn-text">All SEECS Programs</span><span class="qbtn-arrow">›</span>
+      </button>
+    </div>
+
+    <!-- Model Card -->
+    <div class="sb-model-card">
+      <div class="sb-model-label">Model</div>
+      <div class="sb-model-name" id="sb-model-name">llama3.2:latest</div>
+      <div class="sb-model-status">
+        <span class="sb-model-dot"></span>
+        <span>Run: ollama serve</span>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+  <!-- Chat Main -->
+  <div class="chat-main">
+    <div id="messages">
+      <div id="welcome">
+        <div class="welcome-glow">N</div>
+        <div class="welcome-title">Hello, I'm NUSTBot!</div>
+        <div class="welcome-sub">
+          Your personal AI admission counselor for NUST Islamabad.<br/>
+          Ask me about NET, merit calculation, programs, scholarships, or anything NUST.
+        </div>
+        <div class="welcome-chips">
+          <div class="wchip" onclick="askQuick('What NET score do I need for CS at SEECS? What is the typical cutoff?')">CS cutoff?</div>
+          <div class="wchip" onclick="askQuick('Calculate my merit: NET 155, FSc 950/1100, Matric 1020/1100')">Merit example</div>
+          <div class="wchip" onclick="askQuick('Which NUST programs can I get with 78% aggregate?')">Programs for 78%?</div>
+          <div class="wchip" onclick="askQuick('Tell me about NUST hostels, campus life and facilities')">Campus life?</div>
+          <div class="wchip" onclick="askQuick('I have A-Levels. How do I apply to NUST?')">A-Level pathway?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typing -->
+    <div id="typing">
+      <div class="avatar" style="background:linear-gradient(135deg,#003b6e,#00cfff);box-shadow:0 0 14px rgba(0,207,255,.4);font-size:.72rem;font-weight:800;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">N</div>
+      <div class="typing-bubble">
+        <div class="typing-dots"><span></span><span></span><span></span></div>
+        <span class="typing-label">NUSTBot is thinking…</span>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="input-wrap">
+      <div class="input-chips">
+        <div class="ichip" onclick="askQuick('What is my aggregate?')">My aggregate?</div>
+        <div class="ichip" onclick="askQuick('Which programs am I eligible for?')">Eligible programs?</div>
+        <div class="ichip" onclick="askQuick('How can I improve my NET score quickly?')">Improve NET?</div>
+        <div class="ichip" onclick="askQuick('What are the NUST admission deadlines for 2026?')">Deadlines 2026?</div>
+        <div class="ichip" onclick="askQuick('Does NUST accept SAT scores instead of NET?')">SAT accepted?</div>
+      </div>
+      <div class="input-row">
+        <button class="ibtn" id="voice-btn" onclick="toggleVoice()" title="Voice input">🎤</button>
+        <textarea id="chat-input"
+          placeholder="Ask anything about NUST admissions, NET, merit, programs…"
+          rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="ibtn" id="send-btn" onclick="sendMessage()" title="Send (Enter)">➤</button>
+      </div>
+    </div>
+  </div>
+</div><!-- /panel-chat -->
+
+<!-- ═══ MERIT PANEL ════════════════════════════════════ -->
+<div class="panel" id="panel-merit">
+
+  <div class="merit-grid">
+    <!-- LEFT: Calculator -->
+    <div class="mcard">
+      <div class="merit-tabs">
+        <button class="mtab active" id="mtab-calc" onclick="switchMeritTab('calc')">📊 Calculate My Aggregate</button>
+        <button class="mtab" id="mtab-rev" onclick="switchMeritTab('rev')">🎯 Marks Required in NET</button>
+      </div>
+
+      <!-- Forward Calculator -->
+      <div id="mcalc">
+        <div class="mcard-title">Your NUST Aggregate</div>
+
+        <!-- Student type toggle -->
+        <div class="stype-tabs">
+          <button class="stype-btn active" id="stype-fsc" onclick="setStudentType('fsc')">📗 FSc Student</button>
+          <button class="stype-btn" id="stype-alevel" onclick="setStudentType('alevel')">📘 A-Level / O-Level</button>
+          <button class="stype-btn" id="stype-part1" onclick="setStudentType('part1')" style="grid-column:1/-1">📄 FSc Part-1 Result Only</button>
+        </div>
+
+        <div class="frow">
+          <label>NET Score (out of 200)</label>
+          <input class="finput" type="number" id="m-net" placeholder="e.g. 155" min="0" max="200"/>
+        </div>
+        <div class="frow-split">
+          <div class="frow"><label id="lbl-fsc-obt">FSc Marks Obtained</label><input class="finput" type="number" id="m-fsc-obt" placeholder="e.g. 970"/></div>
+          <div class="frow"><label id="lbl-fsc-tot">FSc Total</label><input class="finput" type="number" id="m-fsc-tot" placeholder="1100" value="1100"/></div>
+        </div>
+        <div class="frow-split">
+          <div class="frow"><label id="lbl-mat-obt">Matric Marks Obtained</label><input class="finput" type="number" id="m-mat-obt" placeholder="e.g. 1020"/></div>
+          <div class="frow"><label id="lbl-mat-tot">Matric Total</label><input class="finput" type="number" id="m-mat-tot" placeholder="1100" value="1100"/></div>
+        </div>
+        <div id="alevel-note" style="display:none;font-size:.78rem;color:var(--gold);background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:8px;padding:.5rem .75rem;margin-bottom:.5rem">
+          ⚠ Enter your <strong>IBCC equivalence marks</strong>. A-Level → row 1, O-Level → row 2. Get your equivalence from <strong>ibcc.edu.pk</strong> first.
+        </div>
+        <div id="part1-note" style="display:none;font-size:.78rem;color:var(--cyan2);background:rgba(0,207,255,.06);border:1px solid rgba(0,207,255,.18);border-radius:8px;padding:.5rem .75rem;margin-bottom:.5rem">
+          ℹ Enter your <strong>Part-1 marks and total</strong> (e.g. 490/550). Your aggregate is estimated at this percentage. NUST will recalculate with your final FSc marks when Part-2 results arrive.
+        </div>
+        <button class="calc-btn" onclick="calcMerit()">Calculate My Aggregate →</button>
+
+        <div id="merit-result">
+          <div class="agg-display">
+            <div class="gauge-wrap">
+              <svg viewBox="0 0 96 96">
+                <circle cx="48" cy="48" r="40" fill="none" stroke="rgba(0,207,255,.08)" stroke-width="8"/>
+                <circle id="agg-gauge-fill" cx="48" cy="48" r="40" fill="none"
+                  stroke="url(#aggGrad)" stroke-width="8"
+                  stroke-dasharray="251.3" stroke-dashoffset="251.3"
+                  stroke-linecap="round" style="transition:stroke-dashoffset 1s ease"/>
+                <defs>
+                  <linearGradient id="aggGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#00cfff"/>
+                    <stop offset="100%" stop-color="#7928ca"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="gauge-center">
+                <div class="gauge-num" id="r-agg-num">—</div>
+                <div class="gauge-pct">%</div>
+              </div>
+            </div>
+            <div class="agg-info2">
+              <div class="agg-rating2" id="r-rating">—</div>
+              <div class="agg-breakdown">
+                <span class="bd-pill" id="r-net-c">NET: —</span>
+                <span class="bd-pill" id="r-fsc-c">FSc: —</span>
+                <span class="bd-pill" id="r-mat-c">Mat: —</span>
+              </div>
+            </div>
+          </div>
+          <div class="advice-panel" id="r-advice"></div>
+        </div>
+      </div>
+
+      <!-- Reverse Calculator -->
+      <div id="mrev" style="display:none">
+        <div class="mcard-title">Required NET Score</div>
+
+        <!-- Student type toggle (rev) -->
+        <div class="stype-tabs">
+          <button class="stype-btn active" id="rstype-fsc" onclick="setRevStudentType('fsc')">📗 FSc Student</button>
+          <button class="stype-btn" id="rstype-alevel" onclick="setRevStudentType('alevel')">📘 A-Level / O-Level</button>
+          <button class="stype-btn" id="rstype-part1" onclick="setRevStudentType('part1')" style="grid-column:1/-1">📄 FSc Part-1 Result Only</button>
+        </div>
+
+        <div class="frow">
+          <label>Target Program</label>
+          <select class="finput" id="rev-prog">
+            <option value="">Select a program…</option>
+          </select>
+        </div>
+        <div class="frow-split">
+          <div class="frow"><label id="rlbl-fsc-obt">Your FSc Marks</label><input class="finput" type="number" id="rev-fsc" placeholder="e.g. 950"/></div>
+          <div class="frow"><label id="rlbl-fsc-tot">FSc Total</label><input class="finput" type="number" id="rev-fsc-tot" placeholder="1100" value="1100"/></div>
+        </div>
+        <div class="frow-split">
+          <div class="frow"><label id="rlbl-mat-obt">Your Matric Marks</label><input class="finput" type="number" id="rev-mat" placeholder="e.g. 1000"/></div>
+          <div class="frow"><label id="rlbl-mat-tot">Matric Total</label><input class="finput" type="number" id="rev-mat-tot" placeholder="1100" value="1100"/></div>
+        </div>
+        <div id="rev-alevel-note" style="display:none;font-size:.78rem;color:var(--gold);background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:8px;padding:.5rem .75rem;margin-bottom:.5rem">
+          ⚠ Enter your <strong>IBCC equivalence marks</strong>. A-Level → row 1, O-Level → row 2.
+        </div>
+        <div id="rev-part1-note" style="display:none;font-size:.78rem;color:var(--cyan2);background:rgba(0,207,255,.06);border:1px solid rgba(0,207,255,.18);border-radius:8px;padding:.5rem .75rem;margin-bottom:.5rem">
+          ℹ Enter your <strong>Part-1 marks and total</strong> (e.g. 490/550). The required NET is estimated based on this percentage.
+        </div>
+        <button class="calc-btn purple" onclick="calcReverse()">Calculate Required NET →</button>
+        <div id="rev-result" style="display:none;margin-top:1rem">
+          <div class="agg-display">
+            <div style="font-size:3rem;line-height:1">🎯</div>
+            <div class="agg-info2">
+              <div style="font-size:.8rem;color:var(--text2);margin-bottom:.25rem">You need at least</div>
+              <div class="agg-rating2" style="font-size:1.5rem" id="rev-net-needed">—</div>
+              <div style="font-size:.75rem;color:var(--text3)" id="rev-context">out of 200 for this program</div>
+            </div>
+          </div>
+          <div class="advice-panel" id="rev-advice"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIDDLE: Eligible Programs (shown after calculate, default shows cutoff guide) -->
+    <div class="mcard merit-ref-card" id="prog-result-card" style="overflow:hidden;display:flex;flex-direction:column;">
+      <div class="mcard-title" id="right-panel-title">📋 Program Cutoffs (Approx.)</div>
+      <!-- Default: cutoff table -->
+      <div id="cutoff-ref-table" style="overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:var(--border) transparent;padding-right:.25rem">
+        <table class="cutoff-table">
+          <thead><tr><th>Programme</th><th>School</th><th>Cutoff</th></tr></thead>
+          <tbody id="cutoff-tbody"></tbody>
+        </table>
+        <div style="font-size:.8rem;color:var(--text3);margin-top:.75rem;padding:.5rem .75rem;background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:8px">
+          ⚠ Approximate — varies each year. Enter your scores on the left to see your eligibility.
+        </div>
+      </div>
+      <!-- After calculation: eligible programs -->
+      <div id="r-prog-list" style="display:none;overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:var(--border) transparent;padding-right:.25rem"></div>
+      <button class="discuss-btn" id="discuss-btn" onclick="sendMeritToChat()" style="display:none">💬 Discuss with AI Counselor →</button>
+    </div>
+
+    <!-- RIGHT: Formula & Tips -->
+    <div class="mcard merit-ref-card">
+      <div class="mcard-title">💡 Merit Formula & Tips</div>
+
+      <div class="formula-box">
+        Aggregate =<br/>
+        &nbsp;(NET / 200) × 75<br/>
+        + (FSc / FSc_Total) × 15<br/>
+        + (Mat / Mat_Total) × 10
+      </div>
+
+      <div style="font-size:.78rem;color:var(--text3);margin-bottom:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px">NET Types (200 marks each)</div>
+      <div style="font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:.9rem">
+        <span style="color:var(--cyan2);font-weight:700">Engineering / CS:</span> Math 50% · Physics 30% · English 20%<br/>
+        <span style="color:var(--gold);font-weight:700">Business / Social:</span> Quant Math 40% · English 30% · IQ+GK 30%<br/>
+        <span style="color:var(--green);font-weight:700">Applied Sciences:</span> Bio 40% · Chem 30% · English 15% · IQ 15%<br/>
+        <span style="color:var(--purple2);font-weight:700">Architecture:</span> Aptitude 50% · Math/Phy 30% · English 20%<br/>
+        <span style="color:var(--cyan);font-weight:700">Natural Sciences:</span> Math 50% · English 50%
+      </div>
+
+      <div style="font-size:.78rem;color:var(--text3);margin-bottom:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px">Pro Tips</div>
+      <div class="tip-row"><span class="tip-icon">📈</span><span>Each NET mark = <strong style="color:var(--cyan2)">+0.375%</strong> aggregate</span></div>
+      <div class="tip-row"><span class="tip-icon">🎯</span><span>No bonus marks — admission is purely aggregate-based</span></div>
+      <div class="tip-row"><span class="tip-icon">📝</span><span>SAT ≥1100 accepted instead of NET</span></div>
+      <div class="tip-row"><span class="tip-icon">🎯</span><span>Appear in all 4 series — best score counts</span></div>
+      <div class="tip-row"><span class="tip-icon">📚</span><span>FSc contributes 40% — don't neglect board exams</span></div>
+      <div class="tip-row"><span class="tip-icon">🌐</span><span>O/A-Level needs IBCC equivalence first</span></div>
+      <div class="tip-row"><span class="tip-icon">⚡</span><span>Register at <strong style="color:var(--cyan2)">ugadmissions.nust.edu.pk</strong></span></div>
+    </div>
+  </div>
+</div><!-- /panel-merit -->
+
+<!-- ═══ PROGRAMS PANEL ═════════════════════════════════ -->
+<div class="panel" id="panel-programs">
+  <div class="stat-strip">
+    <div class="stat-card"><div class="stat-num">241</div><div class="stat-lbl">QS World Rank</div></div>
+    <div class="stat-card"><div class="stat-num">#1</div><div class="stat-lbl">Pakistan Rank</div></div>
+    <div class="stat-card"><div class="stat-num">28+</div><div class="stat-lbl">Programs</div></div>
+    <div class="stat-card"><div class="stat-num">3000+</div><div class="stat-lbl">Seats/Year</div></div>
+    <div class="stat-card"><div class="stat-num">120+</div><div class="stat-lbl">Countries (Alumni)</div></div>
+  </div>
+  <div class="programs-bar">
+    <input class="psearch" placeholder="🔍 Search programs, schools…" id="prog-search" oninput="filterProgs()"/>
+    <select class="pselect" id="prog-school-filter" onchange="filterProgs()">
+      <option value="">All Schools</option>
+    </select>
+    <select class="pselect" id="prog-sort" onchange="filterProgs()">
+      <option value="cutoff">Sort: Cutoff ↓</option>
+      <option value="name">Sort: Name A-Z</option>
+      <option value="seats">Sort: Seats ↓</option>
+    </select>
+  </div>
+  <div class="prog-grid" id="prog-grid"></div>
+</div>
+
+<!-- ═══ NET GUIDE PANEL ════════════════════════════════ -->
+<div class="panel" id="panel-guide">
+  <div class="guide-hero">
+    <div class="guide-hero-icon">🧠</div>
+    <div>
+      <h2>NUST Entry Test (NET) Complete Guide</h2>
+      <p>Everything you need to score 160+ and secure admission to your dream program at NUST.</p>
+    </div>
+  </div>
+
+  <div class="guide-grid">
+
+    <!-- Card 1: NET Structure -->
+    <div class="guide-card">
+      <div class="gc-header">
+        <div class="gc-icon" style="background:rgba(0,207,255,.1)">📋</div>
+        <div class="gc-title">NET Structure & Format</div>
+      </div>
+      <div class="gc-body">
+        <ul>
+          <li>Computer-based test (CBT)</li>
+          <li><strong>Total: 200 marks</strong> each NET type</li>
+          <li><strong>No negative marking</strong> — attempt every question</li>
+          <li><strong>4 series</strong> in 2026 — best score used for merit</li>
+          <li>Results <strong>next day at 10:00 AM</strong></li>
+          <li>Register at <strong>ugadmissions.nust.edu.pk</strong></li>
+          <li>Test cities: Islamabad, Karachi, Quetta, Gilgit</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 2: 5 NET Types (corrected) -->
+    <div class="guide-card">
+      <div class="gc-header">
+        <div class="gc-icon" style="background:rgba(251,191,36,.1)">📐</div>
+        <div class="gc-title">5 NET Types — Choose Yours</div>
+      </div>
+      <div class="gc-body">
+        <div class="net-type-row">
+          <span class="net-type-badge" style="background:rgba(0,207,255,.15);color:var(--cyan2)">Engineering/CS</span>
+          <span>Math 50% · Physics 30% · English 20%</span>
+        </div>
+        <div class="net-type-row">
+          <span class="net-type-badge" style="background:rgba(251,191,36,.15);color:var(--gold)">Business/Social</span>
+          <span>Quant Math 40% · English 30% · IQ+GK 30%</span>
+        </div>
+        <div class="net-type-row">
+          <span class="net-type-badge" style="background:rgba(16,185,129,.15);color:var(--green)">Applied Sciences</span>
+          <span>Biology 40% · Chemistry 30% · English 15% · IQ 15%</span>
+        </div>
+        <div class="net-type-row">
+          <span class="net-type-badge" style="background:rgba(121,40,202,.15);color:var(--purple2)">Architecture</span>
+          <span>Aptitude 50% · Math/Physics 30% · English 20%</span>
+        </div>
+        <div class="net-type-row">
+          <span class="net-type-badge" style="background:rgba(14,165,233,.15);color:var(--blue)">Natural Sciences</span>
+          <span>Mathematics 50% · English 50%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Preparation Strategy -->
+    <div class="guide-card">
+      <div class="gc-header">
+        <div class="gc-icon" style="background:rgba(16,185,129,.1)">🎯</div>
+        <div class="gc-title">Preparation Strategy</div>
+      </div>
+      <div class="gc-body">
+        <ul>
+          <li>Identify your NET type first — prepare accordingly</li>
+          <li><strong>Math first</strong> — highest weightage in most NETs</li>
+          <li>Focus on FSc board syllabus only</li>
+          <li>Practice past papers from ugadmissions.nust.edu.pk</li>
+          <li>~54 seconds per question — practice speed daily</li>
+          <li><strong>No penalty</strong> — attempt every single question</li>
+          <li>Take mock tests under real timed conditions</li>
+          <li>Appear in all 4 series — NUST uses your best score</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 4: Merit Formula -->
+    <div class="guide-card">
+      <div class="gc-header">
+        <div class="gc-icon" style="background:rgba(121,40,202,.1)">🔢</div>
+        <div class="gc-title">Merit Formula (Memorize This)</div>
+      </div>
+      <div class="gc-body">
+        <div style="background:rgba(0,0,0,.4);border:1px solid var(--border2);border-radius:10px;padding:.9rem 1.1rem;font-family:monospace;font-size:.95rem;color:var(--cyan2);line-height:2.1;margin-bottom:.75rem">
+          Aggregate =<br/>
+          &nbsp;(NET / 200) × 75<br/>
+          + (FSc / FSc_Total) × 15<br/>
+          + (Mat / Mat_Total) × 10
+        </div>
+        <ul>
+          <li>Max aggregate = <strong>100%</strong></li>
+          <li>Each NET mark = <strong>+0.375%</strong> to aggregate</li>
+          <li>No bonus marks exist — aggregate is purely formula-based</li>
+          <li>SAT ≥ 1100 accepted instead of NET</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 5: NET 2026 Schedule (corrected) -->
+    <div class="guide-card">
+      <div class="gc-header">
+        <div class="gc-icon" style="background:rgba(244,63,94,.1)">📅</div>
+        <div class="gc-title">NET-2026 Official Schedule</div>
+      </div>
+      <div class="gc-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot">1</div><div class="tl-content"><div class="tl-title">Series-1 Registration</div><div class="tl-desc">05 Oct – 25 Nov 2025 · Test: 22 Nov – 10 Dec 2025 (Islamabad)</div></div></div>
+          <div class="tl-item"><div class="tl-dot">2</div><div class="tl-content"><div class="tl-title">Series-2 Registration</div><div class="tl-desc">14 Dec 2025 – 01 Feb 2026 · Test: 31 Jan – 15 Feb 2026</div></div></div>
+          <div class="tl-item"><div class="tl-dot">3</div><div class="tl-content"><div class="tl-title" style="color:var(--cyan)">Series-3 Registration ← Now Open</div><div class="tl-desc">22 Feb – <strong>30 Mar 2026</strong> · Test: from 04 Apr 2026</div></div></div>
+          <div class="tl-item"><div class="tl-dot">4</div><div class="tl-content"><div class="tl-title">Series-4 Registration</div><div class="tl-desc">Apr – Jun 2026 · Test: Jun–Jul 2026</div></div></div>
+          <div class="tl-item"><div class="tl-dot">5</div><div class="tl-content"><div class="tl-title">Merit Lists Published</div><div class="tl-desc">July–August 2026 — ugadmissions.nust.edu.pk</div></div></div>
+          <div class="tl-item"><div class="tl-dot">6</div><div class="tl-content"><div class="tl-title">Classes Begin</div><div class="tl-desc">September 2026</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6: Pro Tips -->
+    <div class="guide-card">
+      <div class="gc-header">
+        <div class="gc-icon" style="background:rgba(0,207,255,.1)">💡</div>
+        <div class="gc-title">Pro Tips from NUST Students</div>
+      </div>
+      <div class="gc-body">
+        <ul>
+          <li><strong>Score 160+</strong> for SEECS (CS, AI, SE) programs</li>
+          <li><strong>Score 140+</strong> for other engineering programs</li>
+          <li><strong>Score 120+</strong> for business and social sciences</li>
+          <li>Improve FSc % — it contributes <strong>40%</strong> to merit</li>
+          <li>Join NUST prep groups on Facebook/WhatsApp</li>
+          <li>Don't skip IQ/Intelligence — easy free marks</li>
+          <li>Apply early, shortlist 6 programs strategically</li>
+          <li>Check <strong>ugadmissions.nust.edu.pk</strong> weekly</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /guide-grid -->
+</div><!-- /panel-guide -->
+
+<!-- ═══ CHECKLIST PANEL ════════════════════════════════ -->
+<div class="panel" id="panel-check">
+
+  <div class="progress-ring-wrap">
+    <svg id="prog-ring-svg" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="33" fill="none" stroke="rgba(0,207,255,.08)" stroke-width="7"/>
+      <circle id="prog-ring-fill" cx="40" cy="40" r="33" fill="none"
+        stroke="url(#ringGrad)" stroke-width="7"
+        stroke-dasharray="207.3" stroke-dashoffset="207.3"
+        stroke-linecap="round" style="transition:stroke-dashoffset .8s ease"/>
+      <defs>
+        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00cfff"/><stop offset="100%" stop-color="#10b981"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div>
+      <div class="prog-ring-info">
+        <h3 id="check-pct">0%</h3>
+        <p>Admission Readiness</p>
+        <div id="check-count">0 of 0 tasks completed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="check-grid">
+    <div class="check-card">
+      <div class="check-card-title">📋 Documents to Prepare</div>
+      <div id="docs-list"></div>
+    </div>
+    <div class="check-card">
+      <div class="check-card-title">🗓️ Steps to Complete</div>
+      <div id="steps-list"></div>
+    </div>
+    <div class="check-card">
+      <div class="check-card-title">📚 Preparation Tasks</div>
+      <div id="prep-list"></div>
+    </div>
+  </div>
+
+</div>
+
+</main>
+</div><!-- /app -->
+
+<div class="name-modal-overlay" id="name-modal-overlay" onclick="handleModalOverlayClick(event)">
+  <div class="name-modal">
+    <div class="name-modal-title" id="name-modal-title">Welcome! What's your name?</div>
+    <div class="name-modal-sub" id="name-modal-sub">Set up your profile so I can personalise your experience. You can update these any time.</div>
+    <div class="name-modal-field">
+      <label>Your Name</label>
+      <input class="name-modal-input" id="name-modal-input" placeholder="Enter your name…" maxlength="40"
+             onkeydown="if(event.key==='Enter')document.getElementById('name-modal-net').focus()"/>
+    </div>
+    <div class="name-modal-field">
+      <label>NET Score <span style="color:var(--text3);font-weight:400">(0 – 200, optional)</span></label>
+      <input class="name-modal-input" id="name-modal-net" placeholder="e.g. 165" type="number" min="0" max="200"
+             onkeydown="if(event.key==='Enter')submitInfoModal()"/>
+    </div>
+    <div class="name-modal-footer">
+      <button class="name-modal-btn primary" id="name-modal-submit" onclick="submitInfoModal()">Let's go →</button>
+      <button class="name-modal-btn secondary" id="name-modal-skip" onclick="skipNameModal()">Skip</button>
+    </div>
+    <button class="name-modal-btn" id="name-modal-clear" onclick="clearSessionFromModal()"
+            style="width:100%;margin-top:.5rem;background:rgba(244,63,94,.07);border:1px solid rgba(244,63,94,.2);color:var(--red);">
+      ✕ Clear Session
+    </button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════════════
+const CUTOFFS={
+  'BS Computer Science':79,'BS Artificial Intelligence':81,'BE Computer Engineering':80,
+  'BS Software Engineering':78,'BE Electrical Engineering':76.5,'BS Information Technology':73.5,
+  'BE Mechanical Engineering':72,'BE Mechatronics & Control Engineering':71,
+  'BE Industrial & Manufacturing Engineering':68,'BE Civil Engineering':69,
+  'BE Environmental Engineering':65,'BBA':70,'BS Accounting & Finance':67,
+  'Bachelor of Architecture':68,'BE Chemical Engineering':67,'BS Biotechnology':68.5,
+  'BS Bioinformatics':64.5,'BS Mathematics':66.5,'BS Physics':64,'BS Chemistry':62.5,
+  'BS Economics':63,'BS Psychology':60,'BS Development Studies':59,'BS Microbiology':62,
+  'BS Materials Engineering':65,'BS Geographical Information Systems':60
+};
+
+const CHECKLIST_DATA={
+  docs:[
+    'CNIC / B-Form (attested copy)',
+    'Matric Certificate + Detailed Marks Certificate',
+    'FSc Part-I & Part-II DMC / Certificate',
+    'Domicile Certificate (attested)',
+    'Character Certificate from school/college',
+    '6 passport-size photographs (recent)',
+    'IBCC Equivalence (if O/A-Level student)',
+    'Disability Certificate (if applicable)',
+    'SAT Score Report (if applying via SAT)',
+    'Medical Fitness Certificate (some programs)'
+  ],
+  steps:[
+    'Register for NET on nust.edu.pk',
+    'Download and print roll number slip',
+    'Appear in NET exam (or SAT)',
+    'Check NET result (next day at 10:00 AM)',
+    'Fill and submit NUST admission form online',
+    'Upload scanned documents on portal',
+    'Pay admission processing fee',
+    'Track merit list announcements',
+    'Confirm admission by paying semester fee',
+    'Report for enrollment on designated day'
+  ],
+  prep:[
+    'Download NUST Self Assessment Guide (official)',
+    'Complete past 3 years NET papers',
+    'Follow Nustify on Instagram/WhatsApp for prep resources',
+    'Follow Nustrive on Instagram/WhatsApp for NET guidance',
+    'Solve 30 math problems daily',
+    'Practice IQ/Intelligence test papers',
+    'Revise FSc Maths, Physics & Chemistry',
+    'Take at least 5 full timed mock tests',
+    'Calculate your estimated aggregate',
+    'Shortlist 6 programs to apply for'
+  ]
+};
+
+// ════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════
+let history=[];
+let session={name:'',net_score:null,fsc_marks:null,aggregate:null};
+let isStreaming=false;
+let recognition=null;
+let allProgs=[];
+let checkState={docs:{},steps:{},prep:{}};
+
+// ════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════
+async function init(){
+  await checkHealth();
+  loadProgs();
+  buildChecklist();
+  startCountdown();
+  populateRevPrograms();
+  buildCutoffTable();
+  setInterval(checkHealth,30000);
+  setInterval(updateCountdown,1000);
+  // Load persisted name or prompt on first visit
+  const savedName=localStorage.getItem('nust_user_name');
+  if(savedName){ setName(savedName); }
+  else { setTimeout(()=>showNameModal(false),600); }
+}
+
+function buildCutoffTable(){
+  const tbody=document.getElementById('cutoff-tbody');
+  if(!tbody)return;
+  const sorted=Object.entries(CUTOFFS).sort((a,b)=>b[1]-a[1]);
+  const schoolMap={
+    'BS Computer Science':'SEECS','BS Artificial Intelligence':'SEECS',
+    'BE Computer Engineering':'SEECS','BS Software Engineering':'SEECS',
+    'BE Electrical Engineering':'SEECS','BS Information Technology':'SEECS',
+    'BE Mechanical Engineering':'SMME','BE Mechatronics & Control Engineering':'SMME',
+    'BE Industrial & Manufacturing Engineering':'SMME','BE Civil Engineering':'SCEE',
+    'BE Environmental Engineering':'SCEE','BE Chemical Engineering':'SCME',
+    'BS Materials Engineering':'SCME','BBA':'NBS','BS Accounting & Finance':'NBS',
+    'Bachelor of Architecture':'SADA','BS Biotechnology':'ASAB',
+    'BS Bioinformatics':'ASAB','BS Microbiology':'ASAB',
+    'BS Mathematics':'SNS','BS Physics':'SNS','BS Chemistry':'SNS',
+    'BS Economics':'S3H','BS Psychology':'S3H','BS Development Studies':'S3H',
+    'BS Geographical Information Systems':'IGIS'
+  };
+  tbody.innerHTML=sorted.map(([prog,cut])=>{
+    const pct=Math.round((cut/100)*100);
+    const col=cut>=85?'var(--green)':cut>=75?'var(--cyan)':cut>=70?'var(--gold)':'var(--text2)';
+    return `<tr>
+      <td>${prog}</td>
+      <td style="color:var(--text3)">${schoolMap[prog]||''}</td>
+      <td style="font-weight:800;color:${col}">${cut}%</td>
+    </tr>`;
+  }).join('');
+}
+
+async function checkHealth(){
+  try{
+    const r=await fetch('/api/health');
+    const d=await r.json();
+    document.getElementById('sb-model-name').textContent=d.model||'—';
+  }catch(e){}
+}
+
+async function loadProgs(){
+  try{
+    const r=await fetch('/api/programs');
+    const d=await r.json();
+    allProgs=d.programs||[];
+    renderProgs(allProgs);
+    const schools=[...new Set(allProgs.map(p=>p.school))].sort();
+    const sel=document.getElementById('prog-school-filter');
+    schools.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sel.appendChild(o)});
+  }catch(e){}
+}
+
+// ════════════════════════════════════════════════════════════
+// TABS
+// ════════════════════════════════════════════════════════════
+function switchTab(t){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+t).classList.add('active');
+  document.getElementById('tab-'+t).classList.add('active');
+}
+function switchMeritTab(t){
+  document.getElementById('mcalc').style.display=t==='calc'?'block':'none';
+  document.getElementById('mrev').style.display=t==='rev'?'block':'none';
+  document.getElementById('mtab-calc').className='mtab'+(t==='calc'?' active':'');
+  document.getElementById('mtab-rev').className='mtab'+(t==='rev'?' active':'');
+  document.getElementById('mcalc').style.display=t==='calc'?'flex':'none';
+  document.getElementById('mrev').style.display=t==='rev'?'flex':'none';
+}
+
+// ════════════════════════════════════════════════════════════
+// SESSION
+// ════════════════════════════════════════════════════════════
+function setName(v){
+  session.name=v;
+  document.getElementById('s-name').textContent=v||'—';
+  if(v) localStorage.setItem('nust_user_name',v);
+  else localStorage.removeItem('nust_user_name');
+}
+function clearSession(){
+  const savedName=session.name;
+  session={name:savedName,net_score:null,fsc_marks:null,aggregate:null};
+  document.getElementById('s-net').textContent='—';
+  document.getElementById('mini-gauge-val').textContent='—';
+  document.getElementById('sb-rating').textContent='Not calculated';
+  document.getElementById('mini-gauge-fill').style.strokeDashoffset='138.2';
+  showToast('Session cleared');
+}
+
+// ── Info modal ──────────────────────────────────────────────
+function showNameModal(isChange=true){
+  const title=document.getElementById('name-modal-title');
+  const sub=document.getElementById('name-modal-sub');
+  const skip=document.getElementById('name-modal-skip');
+  const submitBtn=document.getElementById('name-modal-submit');
+  const clearBtn=document.getElementById('name-modal-clear');
+  if(isChange){
+    title.textContent='Edit your info';
+    sub.textContent='Update your name or NET score shown in your profile.';
+    skip.style.display='';
+    submitBtn.textContent='Save →';
+    clearBtn.style.display='';
+  } else {
+    title.textContent='Welcome! Set up your profile';
+    sub.textContent='Set up your profile so I can personalise your experience. You can update these any time.';
+    skip.style.display='';
+    submitBtn.textContent='Let\'s go →';
+    clearBtn.style.display='none';
+  }
+  document.getElementById('name-modal-input').value=session.name||'';
+  document.getElementById('name-modal-net').value=session.net_score!=null?session.net_score:'';
+  document.getElementById('name-modal-overlay').classList.add('show');
+  setTimeout(()=>document.getElementById('name-modal-input').focus(),120);
+}
+function hideNameModal(){
+  document.getElementById('name-modal-overlay').classList.remove('show');
+}
+function handleModalOverlayClick(e){
+  if(e.target===document.getElementById('name-modal-overlay')) hideNameModal();
+}
+function submitInfoModal(){
+  const name=document.getElementById('name-modal-input').value.trim();
+  const netRaw=document.getElementById('name-modal-net').value.trim();
+  const net=netRaw===''?null:parseInt(netRaw);
+  if(net!==null&&(isNaN(net)||net<0||net>200)){showToast('NET must be 0–200','err');return;}
+  if(name) setName(name);
+  if(net!==null){
+    session.net_score=net;
+    document.getElementById('s-net').textContent=net+'/200';
+  } else if(netRaw===''){
+    session.net_score=null;
+    document.getElementById('s-net').textContent='—';
+  }
+  if(name||net!==null) showToast('Profile updated');
+  hideNameModal();
+}
+function skipNameModal(){
+  hideNameModal();
+}
+function clearSessionFromModal(){
+  clearSession();
+  hideNameModal();
+}
+function updateSidebar(agg){
+  session.aggregate=agg;
+  document.getElementById('mini-gauge-val').textContent=agg.toFixed(0);
+  const offset=138.2*(1-agg/100);
+  document.getElementById('mini-gauge-fill').style.strokeDashoffset=offset;
+  const r=agg>=85?'Excellent!':agg>=75?'Very Good':agg>=65?'Good':'Needs Improvement';
+  document.getElementById('sb-rating').textContent=r;
+}
+
+// ════════════════════════════════════════════════════════════
+// CHAT
+// ════════════════════════════════════════════════════════════
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage()}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px'}
+function askQuick(q){
+  switchTab('chat');
+  setTimeout(()=>{document.getElementById('chat-input').value=q;sendMessage()},50);
+}
+
+async function sendMessage(){
+  if(isStreaming)return;
+  const inp=document.getElementById('chat-input');
+  const msg=inp.value.trim();
+  if(!msg)return;
+  inp.value='';inp.style.height='auto';
+  hideWelcome();
+  appendMsg('user',msg);
+  showTyping(true);
+  isStreaming=true;
+  document.getElementById('send-btn').disabled=true;
+  tryExtractScores(msg);
+
+  let botBubble=null;
+  let full='';
+  try{
+    const resp=await fetch('/api/chat',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:msg,history:history.slice(-6),session})
+    });
+    const reader=resp.body.getReader();
+    const dec=new TextDecoder();
+    showTyping(false);
+    botBubble=createBotBubble();
+    while(true){
+      const{done,value}=await reader.read();
+      if(done)break;
+      const txt=dec.decode(value);
+      for(const line of txt.split('\n')){
+        if(line.startsWith('data: ')){
+          try{
+            const d=JSON.parse(line.slice(6));
+            if(d.t){full+=d.t;renderBubble(botBubble,full)}
+          }catch(e){}
+        }
+      }
+    }
+  }catch(e){
+    showTyping(false);
+    if(!botBubble)botBubble=createBotBubble();
+    renderBubble(botBubble,'⚠️ Connection error. Ensure the server is running at localhost:8000.');
+  }
+  history.push({user:msg,assistant:full});
+  isStreaming=false;
+  document.getElementById('send-btn').disabled=false;
+  scrollDown();
+}
+
+function tryExtractScores(msg){
+  const nm=msg.match(/net[:\s]+(\d{2,3})/i)||msg.match(/(\d{2,3})\s*\/\s*200/i);
+  if(nm){const v=parseInt(nm[1]);if(v>=0&&v<=200){session.net_score=v;document.getElementById('s-net').textContent=v+'/200';}}
+}
+
+function hideWelcome(){const w=document.getElementById('welcome');if(w)w.style.display='none'}
+
+function appendMsg(role,text){
+  const msgs=document.getElementById('messages');
+  const div=document.createElement('div');div.className='msg '+role;
+  const av=document.createElement('div');av.className='avatar';av.textContent=role==='user'?'You':'N';
+  const wrap=document.createElement('div');wrap.className='bubble-wrap';
+  const bubble=document.createElement('div');bubble.className='bubble';
+  if(role==='user')bubble.textContent=text;else bubble.innerHTML=mdToHtml(text);
+  wrap.appendChild(bubble);
+  div.appendChild(av);div.appendChild(wrap);
+  msgs.appendChild(div);scrollDown();
+  return bubble;
+}
+
+function createBotBubble(){
+  const msgs=document.getElementById('messages');
+  const div=document.createElement('div');div.className='msg bot';
+  const av=document.createElement('div');av.className='avatar';av.textContent='N';
+  const wrap=document.createElement('div');wrap.className='bubble-wrap';
+  const bubble=document.createElement('div');bubble.className='bubble';
+  const actions=document.createElement('div');actions.className='msg-actions';
+  const copyBtn=document.createElement('button');copyBtn.className='action-btn';
+  copyBtn.textContent='⧉ Copy';copyBtn.onclick=()=>{navigator.clipboard.writeText(bubble.innerText);showToast('Copied!')};
+  const chatBtn=document.createElement('button');chatBtn.className='action-btn';
+  chatBtn.textContent='🔗 Merit Calc';chatBtn.onclick=()=>switchTab('merit');
+  actions.appendChild(copyBtn);actions.appendChild(chatBtn);
+  wrap.appendChild(bubble);wrap.appendChild(actions);
+  div.appendChild(av);div.appendChild(wrap);
+  msgs.appendChild(div);scrollDown();
+  return bubble;
+}
+
+function renderBubble(b,text){b.innerHTML=mdToHtml(text);scrollDown()}
+function showTyping(s){document.getElementById('typing').className=s?'show':''}
+function scrollDown(){const m=document.getElementById('messages');m.scrollTop=m.scrollHeight}
+
+// ════════════════════════════════════════════════════════════
+// MARKDOWN RENDERER
+// ════════════════════════════════════════════════════════════
+function mdToHtml(t){
+  t=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  t=t.replace(/```([\s\S]*?)```/g,'<pre><code>$1</code></pre>');
+  t=t.replace(/`([^`]+)`/g,'<code>$1</code>');
+  t=t.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+  t=t.replace(/\*([^*\n]+)\*/g,'<em>$1</em>');
+  t=t.replace(/^#{3}\s+(.+)$/gm,'<h4>$1</h4>');
+  t=t.replace(/^#{2}\s+(.+)$/gm,'<h3>$1</h3>');
+  t=t.replace(/^[-•]\s+(.+)$/gm,'<li>$1</li>');
+  t=t.replace(/(<li>[\s\S]*?<\/li>\n?)+/g,m=>'<ul>'+m+'</ul>');
+  t=t.replace(/^\d+\.\s+(.+)$/gm,'<li>$1</li>');
+  t=t.replace(/^&gt;\s*(.+)$/gm,'<blockquote>$1</blockquote>');
+  t=t.replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');
+  return t;
+}
+
+// ════════════════════════════════════════════════════════════
+// VOICE
+// ════════════════════════════════════════════════════════════
+function toggleVoice(){
+  const btn=document.getElementById('voice-btn');
+  if(!('webkitSpeechRecognition' in window)&&!('SpeechRecognition' in window)){showToast('Voice not supported','err');return}
+  if(recognition&&btn.classList.contains('on')){recognition.stop();btn.classList.remove('on');return}
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  recognition=new SR();recognition.lang='en-US';
+  recognition.onresult=e=>{
+    document.getElementById('chat-input').value=e.results[0][0].transcript;
+    btn.classList.remove('on');sendMessage();
+  };
+  recognition.onerror=()=>btn.classList.remove('on');
+  recognition.onend=()=>btn.classList.remove('on');
+  recognition.start();btn.classList.add('on');showToast('Listening…');
+}
+
+// ════════════════════════════════════════════════════════════
+// MERIT CALCULATOR
+// ════════════════════════════════════════════════════════════
+// ─── Student Type Toggle ─────────────────────
+let currentStudentType='fsc';
+let currentRevStudentType='fsc';
+
+function setStudentType(type){
+  currentStudentType=type;
+  document.getElementById('stype-fsc').classList.toggle('active',type==='fsc');
+  document.getElementById('stype-alevel').classList.toggle('active',type==='alevel');
+  document.getElementById('stype-part1').classList.toggle('active',type==='part1');
+  const isA=type==='alevel', isP1=type==='part1';
+  document.getElementById('lbl-fsc-obt').textContent=isA?'A-Level IBCC Marks Obtained':isP1?'FSc Part-1 Marks Obtained':'FSc Marks Obtained';
+  document.getElementById('lbl-fsc-tot').textContent=isA?'A-Level IBCC Total':isP1?'Part-1 Total':'FSc Total';
+  document.getElementById('lbl-mat-obt').textContent=isA?'O-Level IBCC Marks Obtained':'Matric Marks Obtained';
+  document.getElementById('lbl-mat-tot').textContent=isA?'O-Level IBCC Total':'Matric Total';
+  document.getElementById('m-fsc-obt').placeholder=isA?'e.g. 900':isP1?'e.g. 490':'e.g. 970';
+  document.getElementById('m-fsc-tot').value=isP1?'550':isA?'':document.getElementById('m-fsc-tot').value||'1100';
+  if(!isP1&&!isA) document.getElementById('m-fsc-tot').value='1100';
+  document.getElementById('m-mat-obt').placeholder=isA?'e.g. 850':'e.g. 1020';
+  document.getElementById('alevel-note').style.display=isA?'block':'none';
+  document.getElementById('part1-note').style.display=isP1?'block':'none';
+}
+
+function setRevStudentType(type){
+  currentRevStudentType=type;
+  document.getElementById('rstype-fsc').classList.toggle('active',type==='fsc');
+  document.getElementById('rstype-alevel').classList.toggle('active',type==='alevel');
+  document.getElementById('rstype-part1').classList.toggle('active',type==='part1');
+  const isA=type==='alevel', isP1=type==='part1';
+  document.getElementById('rlbl-fsc-obt').textContent=isA?'A-Level IBCC Marks Obtained':isP1?'FSc Part-1 Marks Obtained':'Your FSc Marks';
+  document.getElementById('rlbl-fsc-tot').textContent=isA?'A-Level IBCC Total':isP1?'Part-1 Total':'FSc Total';
+  document.getElementById('rlbl-mat-obt').textContent=isA?'O-Level IBCC Marks Obtained':'Your Matric Marks';
+  document.getElementById('rlbl-mat-tot').textContent=isA?'O-Level IBCC Total':'Matric Total';
+  document.getElementById('rev-fsc').placeholder=isA?'e.g. 900':isP1?'e.g. 490':'e.g. 950';
+  document.getElementById('rev-fsc-tot').value=isP1?'550':isA?'':document.getElementById('rev-fsc-tot').value||'1100';
+  if(!isP1&&!isA) document.getElementById('rev-fsc-tot').value='1100';
+  document.getElementById('rev-mat').placeholder=isA?'e.g. 850':'e.g. 1000';
+  document.getElementById('rev-alevel-note').style.display=isA?'block':'none';
+  document.getElementById('rev-part1-note').style.display=isP1?'block':'none';
+}
+
+async function calcMerit(){
+  const net=parseFloat(document.getElementById('m-net').value);
+  const fo=parseFloat(document.getElementById('m-fsc-obt').value);
+  const ft=parseFloat(document.getElementById('m-fsc-tot').value)||1100;
+  const mo=parseFloat(document.getElementById('m-mat-obt').value);
+  const mt=parseFloat(document.getElementById('m-mat-tot').value)||1100;
+  if(isNaN(net)||isNaN(fo)||isNaN(mo)){showToast('Fill all required fields','err');return}
+  if(net<0||net>200){showToast('NET must be 0–200','err');return}
+  try{
+    const r=await fetch('/api/merit',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({net_score:net,fsc_marks:fo,fsc_total:ft,matric_marks:mo,matric_total:mt,has_hafiz:false})});
+    showMeritResult(await r.json());
+  }catch(e){
+    // Local fallback
+    const agg=((net/200)*75)+((fo/ft)*15)+((mo/mt)*10);
+    showMeritResult({
+      aggregate:parseFloat(agg.toFixed(2)),
+      breakdown:{net_contribution:((net/200)*75),fsc_contribution:((fo/ft)*15),matric_contribution:((mo/mt)*10)},
+      rating:'Calculated locally',advice:'Server unavailable — result may differ.',
+      eligible_programs:[],close_programs:[]
+    });
+  }
+}
+
+function showMeritResult(d){
+  const agg=d.aggregate;
+  document.getElementById('merit-result').style.display='block';
+  document.getElementById('r-agg-num').textContent=agg.toFixed(1);
+  document.getElementById('r-rating').textContent=d.rating||'';
+  document.getElementById('r-net-c').textContent='NET: '+(d.breakdown.net_contribution||0).toFixed(1);
+  document.getElementById('r-fsc-c').textContent='FSc: '+(d.breakdown.fsc_contribution||0).toFixed(1);
+  document.getElementById('r-mat-c').textContent='Mat: '+(d.breakdown.matric_contribution||0).toFixed(1);
+  document.getElementById('r-advice').innerHTML='<strong>💡</strong> '+(d.advice||'');
+
+  // Animate gauge
+  const offset=251.3*(1-agg/100);
+  setTimeout(()=>{document.getElementById('agg-gauge-fill').style.strokeDashoffset=offset},50);
+
+  // Color
+  const col=agg>=85?'var(--green)':agg>=75?'var(--cyan)':agg>=65?'var(--gold)':'var(--red)';
+  document.getElementById('r-agg-num').style.color=col;
+
+  // Update sidebar
+  updateSidebar(agg);
+  session.aggregate=agg;
+
+  // Switch middle panel from cutoff table → eligible programs
+  document.getElementById('cutoff-ref-table').style.display='none';
+  document.getElementById('r-prog-list').style.display='block';
+  document.getElementById('discuss-btn').style.display='block';
+  document.getElementById('right-panel-title').textContent='✅ Your Eligible Programs';
+  const pl=document.getElementById('r-prog-list');
+  pl.innerHTML='';
+
+  const ep=d.eligible_programs||[];
+  if(ep.length){
+    pl.innerHTML+='<div class="prog-result-section"><h3>✅ Eligible Programs</h3></div>';
+    ep.forEach(p=>{
+      const st=p.status==='Likely'?'likely':'borderline';
+      pl.innerHTML+=`<div class="prog-row">
+        <div class="prog-row-left">
+          <div class="prog-name">${p.name}</div>
+          <div class="prog-school">${p.school} • Cutoff ~${p.cutoff}%</div>
+        </div>
+        <span class="status-pill ${st}">${p.status}</span>
+      </div>`;
+    });
+  }
+  const cp=d.close_programs||[];
+  if(cp.length){
+    pl.innerHTML+='<div class="prog-result-section"><h3>🎯 Almost There</h3></div>';
+    cp.forEach(p=>{
+      pl.innerHTML+=`<div class="prog-row">
+        <div class="prog-row-left">
+          <div class="prog-name">${p.name}</div>
+          <div class="prog-school">${p.school} • Cutoff ~${p.cutoff}%</div>
+        </div>
+        <span class="status-pill close">Need +${p.needed}%</span>
+      </div>`;
+    });
+  }
+  if(!ep.length&&!cp.length){
+    pl.innerHTML='<p style="color:var(--text3);font-size:.8rem;padding:.5rem">Aggregate too low for listed programs. Aim for 155+ in NET.</p>';
+  }
+}
+
+function sendMeritToChat(){
+  const agg=document.getElementById('r-agg-num').textContent;
+  const net=document.getElementById('m-net').value;
+  const fo=document.getElementById('m-fsc-obt').value;
+  const ft=document.getElementById('m-fsc-tot').value||1100;
+  const mo=document.getElementById('m-mat-obt').value;
+  switchTab('chat');
+  setTimeout(()=>{
+    const stype=currentStudentType==='alevel'?'A-Level/O-Level':'FSc';
+    const fscLabel=currentStudentType==='alevel'?'A-Level IBCC':'FSc';
+    const matLabel=currentStudentType==='alevel'?'O-Level IBCC':'Matric';
+    const q=`My aggregate is ${agg}%. I am a ${stype} student. (NET: ${net}/200, ${fscLabel}: ${fo}/${ft}, ${matLabel}: ${mo}/1100). Which programs should I prioritize? What are my realistic chances for SEECS? Give me actionable advice.`;
+    document.getElementById('chat-input').value=q;
+    sendMessage();
+  },100);
+}
+
+// ─── Reverse Calculator ──────────────────────
+function populateRevPrograms(){
+  const sel=document.getElementById('rev-prog');
+  Object.keys(CUTOFFS).sort().forEach(p=>{
+    const o=document.createElement('option');o.value=p;o.textContent=`${p} (~${CUTOFFS[p]}%)`;sel.appendChild(o);
+  });
+}
+
+function calcReverse(){
+  const prog=document.getElementById('rev-prog').value;
+  const fo=parseFloat(document.getElementById('rev-fsc').value);
+  const ft=parseFloat(document.getElementById('rev-fsc-tot').value)||1100;
+  const mo=parseFloat(document.getElementById('rev-mat').value);
+  const mt=parseFloat(document.getElementById('rev-mat-tot').value)||1100;
+  if(!prog||isNaN(fo)||isNaN(mo)){showToast('Fill all fields','err');return}
+
+  const target=CUTOFFS[prog]||75;
+  const fscC=(fo/ft)*15;
+  const matC=(mo/mt)*10;
+  const neededAgg=target-fscC-matC;
+  // neededAgg = (net/200)*75  →  net = neededAgg/75*200
+  const neededNet=Math.ceil((neededAgg/75)*200);
+
+  document.getElementById('rev-result').style.display='block';
+  const dn=document.getElementById('rev-net-needed');
+  if(neededNet<=0){
+    dn.textContent='Already Eligible!';
+    dn.style.color='var(--green)';
+    document.getElementById('rev-context').textContent='Your academic marks are sufficient even with 0 NET marks.';
+    document.getElementById('rev-advice').innerHTML='<strong>Amazing!</strong> Your FSc and Matric scores alone meet the cutoff. Appear in NET for higher chances.';
+  } else if(neededNet>200){
+    dn.textContent='Not Achievable';
+    dn.style.color='var(--red)';
+    document.getElementById('rev-context').textContent='Even a perfect NET score won\'t meet this cutoff with current academic marks.';
+    document.getElementById('rev-advice').innerHTML='<strong>Focus on programs with lower cutoffs</strong>, or improve FSc marks in supplementary exams.';
+  } else {
+    dn.textContent=neededNet+' / 200';
+    dn.style.color=neededNet<=160?'var(--cyan)':'var(--gold)';
+    document.getElementById('rev-context').textContent=`to qualify for ${prog} (~${target}% cutoff)`;
+    const diff=neededNet;
+    document.getElementById('rev-advice').innerHTML=
+      `<strong>Target: ${neededNet}/200 in NET.</strong> ${neededNet<=140?'This is very achievable with 3–4 months of focused preparation.':neededNet<=165?'Challenging but very possible. Focus heavily on Mathematics.':'Extremely competitive — you\'ll need near-perfect scores. Consider alternative programs too.'}`;
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// PROGRAMS GRID
+// ════════════════════════════════════════════════════════════
+function renderProgs(progs){
+  const grid=document.getElementById('prog-grid');
+  grid.innerHTML='';
+  if(!progs.length){grid.innerHTML='<p style="color:var(--text3)">No programs found.</p>';return}
+  progs.forEach(p=>{
+    const co=CUTOFFS[p.name]||null;
+    const pct=co?Math.round((co/100)*100):50;
+    const card=document.createElement('div');
+    card.className='prog-card';
+    card.innerHTML=`
+      <div class="pc-name">${p.name}</div>
+      <div class="pc-tags">
+        <span class="tag school">${p.school}</span>
+        <span class="tag deg">${p.degree}</span>
+        <span class="tag yrs">${p.duration}yr</span>
+      </div>
+      <div class="pc-cutoff">Approx. Cutoff: <span>${co?co+'%':'—'}</span></div>
+      <div class="pc-seats">Seats: ~${p.seats||'—'}${p.note?' &nbsp;|&nbsp; '+p.note:''}</div>
+      <div class="pc-bar"><div class="pc-bar-fill" style="width:${pct}%"></div></div>
+    `;
+    card.onclick=()=>askQuick(`Tell me about the ${p.name} program at ${p.school} NUST — requirements, career prospects, cutoff trends and what subjects are taught.`);
+    grid.appendChild(card);
+  });
+}
+
+function filterProgs(){
+  const s=document.getElementById('prog-search').value.toLowerCase();
+  const sch=document.getElementById('prog-school-filter').value.toUpperCase();
+  const sort=document.getElementById('prog-sort').value;
+  let r=allProgs.filter(p=>{
+    const ms=!s||(p.name.toLowerCase().includes(s)||p.school.toLowerCase().includes(s));
+    const msc=!sch||p.school===sch;
+    return ms&&msc;
+  });
+  if(sort==='cutoff') r.sort((a,b)=>(CUTOFFS[b.name]||0)-(CUTOFFS[a.name]||0));
+  else if(sort==='name') r.sort((a,b)=>a.name.localeCompare(b.name));
+  else if(sort==='seats') r.sort((a,b)=>(b.seats||0)-(a.seats||0));
+  renderProgs(r);
+}
+
+// ════════════════════════════════════════════════════════════
+// CHECKLIST
+// ════════════════════════════════════════════════════════════
+function buildChecklist(){
+  renderCheckSection('docs-list',CHECKLIST_DATA.docs,'docs');
+  renderCheckSection('steps-list',CHECKLIST_DATA.steps,'steps');
+  renderCheckSection('prep-list',CHECKLIST_DATA.prep,'prep');
+  updateCheckProgress();
+}
+function renderCheckSection(id,items,key){
+  const el=document.getElementById(id);
+  el.innerHTML='';
+  items.forEach((item,i)=>{
+    const div=document.createElement('div');
+    const done=checkState[key][i]||false;
+    div.className='check-item'+(done?' done':'');
+    div.innerHTML=`<div class="check-box"><span class="check-tick">✓</span></div><div class="check-text">${item}</div>`;
+    div.onclick=()=>{
+      checkState[key][i]=!checkState[key][i];
+      div.classList.toggle('done');
+      updateCheckProgress();
+    };
+    el.appendChild(div);
+  });
+}
+function updateCheckProgress(){
+  let done=0,total=0;
+  ['docs','steps','prep'].forEach(k=>{
+    total+=CHECKLIST_DATA[k].length;
+    done+=Object.values(checkState[k]).filter(Boolean).length;
+  });
+  const pct=total?Math.round((done/total)*100):0;
+  document.getElementById('check-pct').textContent=pct+'%';
+  document.getElementById('check-count').textContent=`${done} of ${total} tasks completed`;
+  const offset=207.3*(1-pct/100);
+  document.getElementById('prog-ring-fill').style.strokeDashoffset=offset;
+}
+
+// ════════════════════════════════════════════════════════════
+// COUNTDOWN — auto-picks the next upcoming NET series
+// Official schedule from ugadmissions.nust.edu.pk
+// ════════════════════════════════════════════════════════════
+// Dates = last day of ONLINE REGISTRATION (not test date)
+// Source: ugadmissions.nust.edu.pk
+const NET_SERIES=[
+  {label:'NET-1 / Series-1 — Reg. Closes',date:new Date('2025-11-25T23:59:59')},
+  {label:'NET-2 / Series-2 — Reg. Closes',date:new Date('2026-02-01T23:59:59')},
+  {label:'NET-3 / Series-3 — Reg. Closes',date:new Date('2026-03-30T23:59:59')},
+  {label:'NET-4 / Series-4 — Reg. Closes',date:new Date('2026-06-30T23:59:59')},
+];
+
+function getNextNET(){
+  const now=new Date();
+  for(const s of NET_SERIES){if(s.date>now)return s;}
+  return {label:'NET-1 2027 (dates TBA)',date:new Date('2027-02-01T09:00:00')};
+}
+
+let _activeNET=getNextNET();
+
+function updateCountdown(){
+  const next=getNextNET();
+  if(next.label!==_activeNET.label){
+    _activeNET=next;
+    document.getElementById('cd-title').textContent='🗓️ '+_activeNET.label+' Countdown';
+  }
+  const diff=_activeNET.date-new Date();
+  if(diff<=0){_activeNET=getNextNET();return;}
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-days').textContent=d;
+  document.getElementById('cd-hrs').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-min').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-sec').textContent=String(s).padStart(2,'0');
+}
+
+function startCountdown(){
+  document.getElementById('cd-title').textContent='🗓️ '+_activeNET.label+' Countdown';
+  updateCountdown();
+}
+
+// ════════════════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════════════════
+function showToast(msg,type='ok'){
+  const t=document.getElementById('toast');t.textContent=msg;
+  const ok=type==='ok';
+  t.style.background=ok?'rgba(16,185,129,.12)':'rgba(244,63,94,.12)';
+  t.style.borderColor=ok?'rgba(16,185,129,.3)':'rgba(244,63,94,.3)';
+  t.style.color=ok?'var(--green)':'var(--red)';
+  t.style.border='1px solid';
+  t.classList.add('show');
+  clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ════════════════════════════════════════════════════════════
+// LIVE REFRESH
+// ════════════════════════════════════════════════════════════
+function showRefreshModal(){
+  document.getElementById('refresh-modal-overlay').classList.add('show');
+}
+function closeRefreshModal(){
+  document.getElementById('refresh-modal-overlay').classList.remove('show');
+}
+async function confirmRefresh(){
+  const btn=document.getElementById('confirm-refresh-btn');
+  const refreshBtn=document.getElementById('refresh-data-btn');
+  btn.textContent='Starting…';
+  btn.disabled=true;
+  refreshBtn.classList.add('spinning');
+  closeRefreshModal();
+  try{
+    await fetch('/api/refresh',{method:'POST'});
+    showToast('Refresh started — fetching latest data from NUST websites. This may take up to 90 seconds.');
+    setTimeout(()=>{ refreshBtn.classList.remove('spinning'); checkHealth(); }, 10000);
+  }catch(e){
+    showToast('Could not start refresh — check your connection.','err');
+    refreshBtn.classList.remove('spinning');
+  }
+  btn.textContent='Start Refresh';
+  btn.disabled=false;
+}
+
+// ════════════════════════════════════════════════════════════
+// START
+// ════════════════════════════════════════════════════════════
+init();
+</script>
+</body>
+</html>

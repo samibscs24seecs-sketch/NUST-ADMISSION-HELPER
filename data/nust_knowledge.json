@@ -1,0 +1,590 @@
+[
+  {
+    "id": "closing_merit_all_programs",
+    "text": "NUST Closing Merit / Cutoff Aggregates (2025 approximate — calibrated reference values): These are the closing aggregates — the lowest aggregate at which a student was admitted in the final merit list. BS Artificial Intelligence (AI) SEECS: ~81.0% closing merit. BE Computer Engineering SEECS: ~80.0%. BS Computer Science (CS) SEECS: ~79.0%. BS Software Engineering SEECS: ~78.0%. BE Electrical Engineering SEECS: ~76.5%. BS Information Technology SEECS: ~73.5%. BBA NBS: ~70.0%. BE Mechanical Engineering SMME: ~72.0%. BE Mechatronics & Control Engineering SMME: ~71.0%. BE Civil Engineering SCEE: ~69.0%. BE Industrial & Manufacturing Engineering SMME: ~68.0%. Bachelor of Architecture SADA: ~68.0%. BS Biotechnology ASAB: ~68.5%. BE Chemical Engineering SCME: ~67.0%. BS Accounting & Finance NBS: ~67.0%. BS Mathematics SNS: ~66.5%. BE Environmental Engineering SCEE: ~65.0%. BS Materials Engineering SCME: ~65.0%. BS Bioinformatics ASAB: ~64.5%. BS Physics SNS: ~64.0%. BS Microbiology ASAB: ~62.0%. BS Chemistry SNS: ~62.5%. BS Economics S3H: ~63.0%. BS Psychology S3H: ~60.0%. BS Geographical Information Systems IGIS: ~60.0%. BS Development Studies S3H: ~59.0%. Important note: These cutoffs shift by 1–3 percentage points each year depending on competition, total applicants, and seat availability. When asked about a specific year's closing merit, always clarify that it is approximate and the current year's cutoff may be slightly higher or lower.",
+    "category": "merit",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "merit_formula_001",
+    "text": "NUST uses a standardized aggregate formula to rank all undergraduate applicants. The formula is: Aggregate = (NET Score / 200 × 75) + (FSc Marks / FSc Total × 15) + (Matric Marks / Matric Total × 10). This means your NET exam score contributes 75% to your final aggregate, your FSc (or equivalent) result contributes 15%, and your Matric (SSC) result contributes 10%. For example, if you scored 160/200 in NET, 1000/1100 in FSc, and 950/1100 in Matric: NET contribution = (160/200) × 75 = 60, FSc contribution = (1000/1100) × 15 = 13.64, Matric contribution = (950/1100) × 10 = 8.64. Total aggregate = 60 + 13.64 + 8.64 = 82.28%. This score is then compared against program-specific merit cutoffs to determine admission eligibility.",
+    "category": "merit",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "merit_formula_002",
+    "text": "The NUST merit aggregate is calculated out of 100 points total, with NET contributing 75 points, FSc contributing 15 points, and Matric contributing 10 points. It is critical to understand that the NET score is divided by 200 (not 100), since NET is out of 200 marks. Similarly, FSc and Matric marks are divided by their actual totals (which can vary — typically 1100 for FSc pre-engineering with Physics, Chemistry, Math). If a student has different subjects or a different marking scheme, they should use their actual marks and totals. O/A-Level students must first obtain IBCC equivalence certificates and then use those equivalent marks in the formula. The aggregate is rounded to two decimal places for merit list preparation. NET has by far the highest weightage at 75%, making it the most critical factor in NUST admissions.",
+    "category": "merit",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "merit_hafiz_003",
+    "text": "NUST admission is purely merit-based using the aggregate formula: (NET/200×75) + (FSc/FSc_Total×15) + (Matric/Matric_Total×10). There is NO Hafiz-ul-Quran bonus, NO extracurricular activity bonus, and NO other additions to any component of this formula. If a student asks about a Hafiz bonus or any other bonus marks, clearly inform them that no such policy exists at NUST. Admission eligibility is determined solely by the calculated aggregate compared against program-specific cutoffs.",
+    "category": "merit",
+    "source": "https://nust.edu.pk/admissions/eligibility/"
+  },
+  {
+    "id": "merit_sat_004",
+    "text": "NUST accepts SAT (Scholastic Assessment Test) scores as an alternative to the NET exam. Students who achieve a SAT score of 1100 or above (out of 1600) are eligible to apply to NUST without taking the NET exam. The SAT score is used in place of the NET score in the aggregate formula. This provision benefits international students and Pakistani students who have taken the SAT instead of NET. Students should note that the SAT Math section is particularly important for engineering programs. For SAT applicants, NUST typically considers the SAT Score in the aggregate calculation using a conversion mechanism. Students should verify the exact conversion with NUST admissions office as it may be updated annually.",
+    "category": "merit",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "net_types_overview_005",
+    "text": "NUST has FIVE different types of NET (Entry Test), each designed for a specific group of programmes. Students must appear in the correct NET type based on the programme they are applying to. All NETs are out of 200 marks. The five types are: (1) NET Engineering Test — for Engineering and Computer Science programmes. (2) NET Applied Sciences Test — for Biotechnology, Food Science, Agriculture, Applied Biosciences. (3) NET Architecture Test — for Bachelor of Architecture (B.Arch) and Bachelor of Industrial Design (BID). (4) NET Business Studies & Social Sciences Test — for BBA, Accounting & Finance, Economics, Public Administration, Mass Communication. (5) NET Natural Sciences Test — for Natural Sciences programmes like Physics, Chemistry, Mathematics at SNS. Students applying to multiple programme types may need to appear in multiple NETs. Always check ugadmissions.nust.edu.pk to confirm which NET applies to your chosen programme.",
+    "category": "net",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "net_engineering_005a",
+    "text": "NET Engineering Test — This is the NET for candidates applying to Engineering and Computer Science undergraduate programmes at NUST, including all programmes at SEECS, SMME, SCEE, SCME, and other engineering schools. Test Pattern (total 200 marks): Mathematics 50% (100 marks) — covers algebra, calculus, trigonometry, coordinate geometry, and statistics; Physics 30% (60 marks) — covers mechanics, waves, electricity, magnetism, and modern physics; English 20% (40 marks) — covers grammar, vocabulary, and comprehension. There is NO Chemistry section and NO Intelligence section in the Engineering NET. Mathematics has the highest weightage at 50%, so students should prioritise it heavily in preparation.",
+    "category": "net",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "net_applied_sciences_005b",
+    "text": "NET Applied Sciences Test — This NET is for candidates applying to undergraduate programmes in Applied Biosciences, Biotechnology, Food Science & Technology, Agriculture, and related fields at NUST (primarily ASAB and NIAS schools). Test Pattern (total 200 marks): Biology 40% (80 marks); Chemistry 30% (60 marks); English 15% (30 marks); Intelligence 15% (30 marks). There is NO Mathematics and NO Physics section in this NET. Students from pre-medical FSc background are the primary applicants. Focus heavily on Biology and Chemistry as they together make up 70% of the test.",
+    "category": "net",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "net_architecture_005c",
+    "text": "NET Architecture Test — This NET is for candidates applying to Bachelor of Architecture (B.Arch) and Bachelor of Industrial Design (BID) programmes at NUST (SADA school). Test Pattern (total 200 marks): Cognitive and Aptitude 50% (100 marks) — tests spatial reasoning, visual aptitude, and design thinking; Mathematics/Physics relevant to design 30% (60 marks) — covers portions of Maths and Physics relevant to architectural and design problems; English 20% (40 marks). The heavy weightage on Cognitive and Aptitude (50%) means students must practice spatial reasoning, pattern recognition, and design-related aptitude tests. This NET is unique and different from both Engineering and Business NETs.",
+    "category": "net",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "net_business_005d",
+    "text": "NET Business Studies & Social Sciences Test — This NET is for candidates applying to undergraduate programmes in Business Administration (BBA), Accounting & Finance, Economics, Public Administration, Mass Communication, and related social science fields at NUST (NBS and S3H schools). Test Pattern (total 200 marks): Quantitative Mathematics 40% (80 marks) — covers arithmetic, algebra, basic statistics, and quantitative reasoning; Verbal / English 30% (60 marks) — covers grammar, vocabulary, reading comprehension, and verbal reasoning; Intelligence & General Knowledge 30% (60 marks) — covers logical reasoning, current affairs, and general knowledge. There is NO Physics, NO Chemistry, and NO Biology in this NET. Pre-medical, pre-engineering, and humanities students are all eligible. Students asking about NET for BBA or business programmes should prepare Quantitative Maths, English, and General Knowledge.",
+    "category": "net",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "net_natural_sciences_005e",
+    "text": "NET Natural Sciences Test — This NET is for candidates applying to Natural Sciences programmes at NUST (SNS school), including BS Mathematics, BS Physics, BS Chemistry, and related pure science degrees. Test Pattern (total 200 marks): Mathematics 50% (100 marks); English 50% (100 marks). This is a unique two-subject NET with equal weightage between Mathematics and English. There is NO Physics, NO Chemistry, NO Biology, and NO Intelligence section. Students applying to SNS programmes must be very strong in both Mathematics and English. The equal split means English is just as important as Mathematics for these programmes.",
+    "category": "net",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "net_preparation_006",
+    "text": "To prepare for the NUST Entry Test (NET), students should focus on FSc-level Mathematics, Physics, and Chemistry or Computer Science. Key preparation strategies include: (1) Study FSc textbooks thoroughly — NUST NET is primarily based on FSc Punjab/Federal Board curriculum. (2) Practice past NET papers available on NUST website and from coaching centers. (3) Focus extra effort on Mathematics (60 marks) since it has the highest weightage. (4) Improve speed and accuracy with timed practice tests. (5) For Intelligence section, practice aptitude test questions from books like IQ puzzles and reasoning exercises. (6) For English section, review grammar rules, common vocabulary, and reading comprehension strategies. (7) Enroll in a reputable coaching academy specializing in NUST preparation. (8) Start preparation at least 3-6 months before the test date. HIGHLY RECOMMENDED ONLINE RESOURCES: Nustify (https://www.nustify.com/) — a dedicated NUST preparation platform with past papers and tips; follow them on Instagram and WhatsApp as 'nustify'. NUStrive (https://nustrive1.vercel.app/) — excellent platform for NET mock tests and NUST guidance; follow them on Instagram and WhatsApp as 'NUStrive'. For 2026, NET Series-3 registration closes 30 Mar 2026 and test starts 4 Apr 2026. Register at ugadmissions.nust.edu.pk (registration portal only — study resources are on Nustify and NUStrive).",
+    "category": "net",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "net_dates_007",
+    "text": "NET-2026 Official Schedule (also called Series schedule, source: ugadmissions.nust.edu.pk): NUST conducts four NET series in 2026. NET-1 / Series-1: Online registration 05 Oct – 25 Nov 2025; Test in Islamabad 22 Nov – 10 Dec 2025. NET-2 / Series-2: Online registration 14 Dec 2025 – 01 Feb 2026; Test in Islamabad 31 Jan – 15 Feb 2026; Karachi 14–15 Feb 2026; Quetta 25–26 Mar 2026. NET-3 / Series-3: Online registration 22 Feb – 30 Mar 2026 (LAST DATE TO APPLY FOR NET-3 IS 30 MARCH 2026); Test in Islamabad from 04 Apr 2026 onwards. NET-4 / Series-4: Online registration Apr – Jun 2026; Test in Islamabad Jun 2026; Quetta and other cities Jul 2026. Students can appear in multiple series — NUST uses the best score. Register at ugadmissions.nust.edu.pk.",
+    "category": "net",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "net_actsat_007b",
+    "text": "ACT/SAT Requirements for NUST 2026 (source: ugadmissions.nust.edu.pk): Students can use ACT or SAT scores instead of NET for certain programmes. For Engineering, Computing Programmes, BS Biotechnology, BS Environmental Science, BS Agriculture, BS Food Science and Technology, and Architecture & Industrial Design: ACT Composite Score (Maths, English, Reading, and Science) with minimum 25 is required for ACT exams taken before April 2025. For ACT exams from April 2025 onwards, ACT Composite Score (Maths, English, Reading only — Science not included) with minimum 25 is required, plus Science portion minimum 25 separately. For Natural Sciences programmes: ACT STEM Score with minimum 25 is required. For Business Studies, Social Sciences, and LLB: SAT score with minimum 550 in each subject, OR ACT score in Maths, English and Reading with minimum 25 in each subject. Always verify current requirements at ugadmissions.nust.edu.pk as these may be updated.",
+    "category": "net",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "programs_seecs_008",
+    "text": "SEECS (School of Electrical Engineering and Computer Science) is NUST's most prestigious school and consistently produces top graduates. Programs offered: BS Artificial Intelligence (50 seats, cutoff ~81%) — the most competitive SEECS programme, focusing on machine learning, deep learning, and data science; BE Computer Engineering (75 seats, cutoff ~80%) — combines hardware and software design; BS Computer Science (150 seats, cutoff ~79%) — one of Pakistan's best CS programs, covering algorithms, AI, software engineering, and systems; BS Software Engineering (75 seats, cutoff ~78%) — industry-oriented with focus on software development lifecycles; BE Electrical Engineering (100 seats, cutoff ~76.5%) — power systems, electronics, and telecommunications; BS Information Technology (50 seats, cutoff ~73.5%) — covers networking, database management, and IT systems. SEECS graduates are highly sought by technology companies both in Pakistan and internationally.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/seecs/"
+  },
+  {
+    "id": "programs_smme_009",
+    "text": "SMME (School of Mechanical and Manufacturing Engineering) is NUST's mechanical engineering school with strong industry connections. Programs: BE Mechanical Engineering (120 seats, cutoff ~72%) — covers thermodynamics, fluid mechanics, machine design, and manufacturing; BE Mechatronics & Control Engineering (60 seats, cutoff ~71%) — robotics, automation, and control systems; BE Industrial & Manufacturing Engineering (60 seats, cutoff ~68%) — production management, quality control, and industrial operations. SMME has state-of-the-art labs including CNC machines, 3D printing facilities, and robotics labs. Graduates work in automotive, aerospace, defense, energy, and manufacturing sectors. SMME also offers MS and PhD programs and has active research in renewable energy, advanced manufacturing, and robotics.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/smme/"
+  },
+  {
+    "id": "programs_scee_010",
+    "text": "SCEE (School of Civil and Environmental Engineering) offers two programs at NUST: BE Civil Engineering (100 seats, cutoff ~69%) — covers structural engineering, geotechnical engineering, transportation, water resources, and construction management. BE Environmental Engineering (50 seats, cutoff ~65%) — focuses on water treatment, waste management, environmental impact assessment, and sustainable development. SCEE graduates work with organizations like NHA, WASA, FWO, and various international development agencies. The school has a strong research profile in earthquake engineering, water resources, and sustainable infrastructure. Both programs are recognized by PEC (Pakistan Engineering Council). The school's location in Islamabad provides proximity to major infrastructure projects and government agencies.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/scee/"
+  },
+  {
+    "id": "programs_scme_011",
+    "text": "SCME (School of Chemical and Materials Engineering) offers two undergraduate programs: BE Chemical Engineering (60 seats, cutoff ~67%) — covers process engineering, reaction kinetics, thermodynamics, separation processes, and chemical plant design. Graduates work in petrochemicals, pharmaceuticals, fertilizers, and food processing industries. BS Materials Engineering (40 seats, cutoff ~65%) — focuses on polymers, composites, nanomaterials, and metals. Graduates work in manufacturing, materials research, and emerging technologies. SCME has well-equipped laboratories for polymer processing, materials characterization, and chemical analysis. The school has research collaborations with industries and international universities. Both programs are accredited by PEC.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/scme/"
+  },
+  {
+    "id": "programs_nbs_012",
+    "text": "NBS (NUST Business School) is one of Pakistan's leading business schools offering: BBA (120 seats, cutoff ~70%) — covers business administration, marketing, management, and entrepreneurship. The BBA program is known for its case study approach and industry engagement. BS Accounting & Finance (80 seats, cutoff ~67%) — focuses on financial management, auditing, taxation, and financial analysis. NBS is located in the main NUST campus in Sector H-12, Islamabad. The school has partnerships with major banks, corporations, and professional bodies including ACCA and ICAP. NBS graduates are placed in top companies, banks, and multinationals. The school organizes annual business competitions, seminars, and industry visits. Admission to NBS programs does not require Physics/Chemistry in FSc — pre-medical or humanities students can also apply.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/nbs/"
+  },
+  {
+    "id": "programs_asab_013",
+    "text": "ASAB (Atta-ur-Rahman School of Applied Biosciences) offers life science programs at NUST: BS Biotechnology (50 seats, cutoff ~68.5%) — covers molecular biology, genetic engineering, fermentation technology, and bioproducts. BS Bioinformatics (30 seats, cutoff ~64.5%) — integrates biology, computer science, and statistics to analyze biological data, genomics, and proteomics. BS Microbiology (30 seats, cutoff ~62%) — covers microbial physiology, immunology, clinical microbiology, and food microbiology. ASAB has modern laboratories for cell culture, PCR, DNA sequencing, and bioinformatics computing. Eligibility for ASAB programs requires pre-medical background (Biology + Chemistry). Graduates work in pharmaceutical companies, research institutions, hospitals, and food industries. ASAB has active research in cancer biology, infectious diseases, and industrial biotechnology.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/asab/"
+  },
+  {
+    "id": "programs_sns_014",
+    "text": "SNS (School of Natural Sciences) at NUST offers fundamental science programs: BS Mathematics (40 seats, cutoff ~66.5%) — pure and applied mathematics including calculus, algebra, differential equations, and numerical methods. BS Physics (40 seats, cutoff ~64%) — classical and modern physics, quantum mechanics, electrodynamics, and computational physics. BS Chemistry (40 seats, cutoff ~62.5%) — organic, inorganic, physical, and analytical chemistry. SNS programs are ideal for students who want to pursue academic research, teaching, or transition into interdisciplinary fields like data science, biophysics, or computational chemistry. The school has strong MS and PhD programs. Graduates can pursue careers in research institutions, academia, and technology sectors. SNS courses are also service courses for other NUST schools.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/sns/"
+  },
+  {
+    "id": "programs_s3h_015",
+    "text": "S3H (School of Social Sciences and Humanities) offers social science programs at NUST: BS Economics (60 seats, cutoff ~63%) — microeconomics, macroeconomics, econometrics, development economics, and policy analysis. BS Psychology (50 seats, cutoff ~60%) — cognitive psychology, clinical psychology, organizational behavior, and research methods. BS Development Studies (40 seats, cutoff ~59%) — development theories, poverty alleviation, policy design, and international development. S3H programs welcome students from all backgrounds — pre-engineering, pre-medical, and humanities students can apply. The school has a strong faculty with PhDs from top international universities. Graduates work in NGOs, government agencies, international organizations like UN and World Bank, banks, and research centers. S3H also offers MS programs in Economics and Development Studies.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/s3h/"
+  },
+  {
+    "id": "programs_other_016",
+    "text": "Other NUST schools offering undergraduate programs: SADA (School of Art, Design and Architecture) offers Bachelor of Architecture (B.Arch) — a 5-year professional degree with 40 seats and cutoff ~68%. The program covers architectural design, urban planning, construction technology, and architectural history. Portfolio submission may be required. IGIS (Institute of Geographical Information Systems) offers BS Geographical Information Systems (30 seats, cutoff ~60%) — covering GIS software, remote sensing, spatial data analysis, and cartography. Graduates work in urban planning, disaster management, agriculture, and defense sectors. Both programs are unique in Pakistan's higher education landscape. NUST Islamabad campus houses all these schools across a sprawling 1,500-acre campus in the Margalla foothills.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/"
+  },
+  {
+    "id": "fees_structure_017",
+    "text": "NUST fee structure varies by school and program type. For the 2025-26 academic year, approximate semester fees are: SEECS (Engineering & CS programs): approximately PKR 2.1 lakh per semester (PKR 210,000). SMME, SCEE, SCME (Engineering programs): approximately PKR 1.8-2.0 lakh per semester. NBS (Business programs): approximately PKR 1.6 lakh per semester. ASAB, SNS (Science programs): approximately PKR 1.5-1.7 lakh per semester. S3H (Social sciences): approximately PKR 1.3-1.5 lakh per semester. Architecture (SADA): approximately PKR 1.8 lakh per semester. An engineering degree (8 semesters) costs approximately PKR 14-17 lakh total. Fees are revised periodically, so students should verify current fees on nust.edu.pk. Additional charges include lab fees, registration fees, and internet charges.",
+    "category": "fees",
+    "source": "https://nust.edu.pk/admissions/fee-structure/"
+  },
+  {
+    "id": "fees_other_018",
+    "text": "Beyond semester tuition fees, NUST students should budget for additional costs. Security deposit (refundable): PKR 5,000-10,000, paid once at admission. Student Activity Fund: PKR 2,000-3,000 per semester. Library fee: PKR 1,000-2,000 per semester. Medical fund: PKR 1,500-2,500 per semester. Hostel fees: PKR 8,000-15,000 per month depending on room type (single, double, or shared). Mess/cafeteria: approximately PKR 6,000-10,000 per month. Transportation: if living off-campus, budget PKR 3,000-8,000 per month. Textbooks and supplies: PKR 10,000-20,000 per semester. Total annual cost for an on-campus student (including accommodation and living) ranges from PKR 5-7 lakh per year. NUST's fees, while higher than public sector universities, are considered reasonable given the quality of education and campus facilities.",
+    "category": "fees",
+    "source": "https://nust.edu.pk/admissions/fee-structure/"
+  },
+  {
+    "id": "eligibility_general_019",
+    "text": "General eligibility criteria for NUST undergraduate admissions: (1) Academic qualification: Candidates must have passed FSc (Pre-Engineering for engineering programs, Pre-Medical for biosciences) with a minimum of 60% marks. O-Level and A-Level students are eligible with IBCC equivalence certificates. (2) Matric/SSC requirement: Minimum 60% marks in Matric/SSC is required. (3) Nationality: Pakistani nationals (including AJK and GB) and foreign nationals are eligible. (4) Age: No strict age limit, but candidates must have completed intermediate/A-Level by the time of enrollment. (5) Entry Test: Must appear in NUST Entry Test (NET) or provide SAT score of 1100 or above. (6) Character: Good moral character (character certificate from last institution required). Candidates who have been expelled or have criminal records may be ineligible.",
+    "category": "eligibility",
+    "source": "https://nust.edu.pk/admissions/eligibility/"
+  },
+  {
+    "id": "eligibility_programs_020",
+    "text": "Program-specific eligibility at NUST: Engineering programs (SEECS, SMME, SCEE, SCME): FSc Pre-Engineering (Physics, Chemistry, Mathematics) is required. Minimum 60% in FSc. Computer Science programs (BS CS, BS AI, BS SE, BS IT): FSc Pre-Engineering or FSc Pre-Medical (if Computer Science/IT is a subject) or equivalent. Business programs (NBS — BBA, BS Accounting & Finance): FSc in any group (Pre-Engineering, Pre-Medical, or Humanities/General Science) is accepted. Minimum 50% may be acceptable for some NBS programs. Science programs (ASAB — Biotechnology, Bioinformatics, Microbiology): FSc Pre-Medical (Biology, Chemistry, Physics/Mathematics). SNS programs: Pre-Engineering or Pre-Medical depending on the subject. Architecture (SADA): FSc Pre-Engineering or Pre-Medical. Social Sciences (S3H): FSc from any group. GIS (IGIS): FSc Pre-Engineering preferred.",
+    "category": "eligibility",
+    "source": "https://nust.edu.pk/admissions/eligibility/"
+  },
+  {
+    "id": "eligibility_olevel_021",
+    "text": "Students with O-Level and A-Level qualifications from Cambridge (CAIE) or Edexcel can apply to NUST. Requirements: (1) IBCC Equivalence Certificate: Must obtain equivalence from the Inter-Board Committee of Chairmen (IBCC) in Islamabad. The IBCC converts O-Level and A-Level grades into percentage equivalents which are used in the merit formula. (2) For O-Level (Matric equivalent): Get IBCC equivalence certificate for O-Levels to replace Matric marks in the formula. (3) For A-Level (FSc equivalent): Get IBCC equivalence certificate for A-Levels to replace FSc marks. Subjects required for engineering: Mathematics, Physics, and Chemistry at A-Level. (4) NET or SAT: O/A Level students must either appear in NET or submit SAT score ≥1100. (5) Processing time: IBCC equivalence can take 4-6 weeks, so start early. Contact IBCC at ibcc.edu.pk for current fee and process.",
+    "category": "eligibility",
+    "source": "https://nust.edu.pk/admissions/eligibility/"
+  },
+  {
+    "id": "documents_required_022",
+    "text": "Documents required for NUST admission application: (1) CNIC (Computerized National Identity Card) — if under 18, parent's CNIC. (2) Matric/SSC Mark Sheet (DMC) — attested copy. (3) FSc/Intermediate Mark Sheet (DMC) — attested copy (or provisional if result is pending). (4) Matric Certificate. (5) FSc Certificate or Provisional Certificate. (6) Domicile Certificate — from the candidate's home district. (7) Character Certificate — from last institution attended. (8) Passport-size photographs — typically 4-6 recent photos. (9) NET registration confirmation and result card. (10) For O/A Level students: IBCC equivalence certificates. (11) Disability certificate (if applicable — for reserved seats). (13) Departmental permission letter (for government employees). All documents should be self-attested; original documents may be required during enrollment.",
+    "category": "documents",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "admission_process_023",
+    "text": "NUST admission process for 2026 follows these steps: Step 1 — Registration: Create an account on nust.edu.pk and register for the NET exam. Registration opens approximately 4-6 weeks before each NET. Step 2 — Appear in NET: Take the NUST Entry Test at your nearest designated test center. Results are typically announced within 2-4 weeks. Step 3 — Apply Online: After NET results, fill out the online admission form on NUST's portal. Enter your academic marks, choose programs in order of preference (you can list multiple programs), and upload required documents. Step 4 — Merit List: NUST publishes merit lists (1st, 2nd, and sometimes 3rd merit list) based on calculated aggregates. Check the list online. Step 5 — Acceptance: If selected, confirm your admission by paying the fee within the stipulated deadline. Step 6 — Enrollment: Visit campus for biometric registration and receive your student ID and schedule. Missing any deadline can result in forfeiture of your seat.",
+    "category": "general",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "dates_2026_024",
+    "text": "NUST 2026 NET and admission schedule (confirmed from ugadmissions.nust.edu.pk). There are FOUR NET series — not three. NET-1: Registration 5 Oct – 25 Nov 2025, Test 22 Nov – 10 Dec 2025 (Islamabad). NET-2: Registration 14 Dec 2025 – 1 Feb 2026, Test 31 Jan – 15 Feb 2026 (Islamabad), 14–15 Feb (Karachi), 25–26 Mar (Quetta). NET-3: Registration 22 Feb – 30 Mar 2026, Test from 4 Apr 2026 (Islamabad). NET-4: Registration Apr – Jun 2026, Test Jun 2026 (Islamabad), Jul 2026 (Quetta and other cities). After NET series end: Online admission form opens, followed by First Merit List (typically Sep 2026), fee submission within 7 days, Second Merit List if vacancies remain, classes begin Oct 2026. NUST uses the best NET score across all series the student appeared in. Always verify at nust.edu.pk.",
+    "category": "dates",
+    "source": "https://nust.edu.pk/admissions/important-dates/"
+  },
+  {
+    "id": "scholarships_merit_025",
+    "text": "NUST offers merit-based scholarships to reward academic excellence. Students who rank in the top 10% of their class/program by aggregate score receive a 100% tuition fee waiver for the relevant semester. Students in the top 11-25% receive a 50% fee waiver. This scholarship is renewed every semester based on academic performance at NUST (CGPA ≥ 3.0 typically required to maintain). The scholarship is extremely competitive — in top programs like BS AI (~81%), BE Computer Engineering (~80%), and BS Computer Science (~79%), the admitted pool is already high-achieving, making the top-10% bar very tough. To maximize chances of getting merit scholarship: score as high as possible in NET, maintain excellent FSc grades, and perform well in NUST's own exams. Scholarship announcements are made at the start of each semester after grade submission.",
+    "category": "scholarships",
+    "source": "https://nust.edu.pk/admissions/scholarships/"
+  },
+  {
+    "id": "scholarships_need_026",
+    "text": "NUST provides need-based financial assistance to deserving students who cannot afford the tuition fees. The need-based scholarship program requires students to submit family income documents (salary slips, bank statements, property documents). Students with family income below a certain threshold (varies annually) are prioritized. Need-based assistance can cover 25%, 50%, 75%, or 100% of tuition fees depending on financial need assessment. Students must apply separately for need-based scholarship within the first month of admission. Applications are evaluated by NUST's financial aid committee. In addition to institutional scholarships, NUST students can apply for external scholarships from HEC (Higher Education Commission), Prime Minister's scholarships, Ehsaas Undergraduate Scholarship (for deserving students from low-income families), and provincial government scholarships.",
+    "category": "scholarships",
+    "source": "https://nust.edu.pk/admissions/scholarships/"
+  },
+  {
+    "id": "scholarships_hec_027",
+    "text": "HEC (Higher Education Commission of Pakistan) offers several scholarship programs that NUST students can benefit from: (1) HEC Undergraduate Scholarship (UGSS) — for students with family income below PKR 45,000/month and strong academic performance. (2) Ehsaas Undergraduate Scholarship — for students from low-income families, covering fees and living allowance. (3) PM Youth Programme — merit-cum-need based scholarships. (4) HEC Need-Based Scholarship for Students from Merged Districts (KP) and tribal areas. (5) Indigenous 5000 PhD scholarships (for postgraduate students). For HEC scholarships, students must apply through the HEC portal (hec.gov.pk) and meet specified income and academic criteria. NUST's student affairs office assists students in applying for external scholarships. Always check current HEC announcements as scholarship programs and amounts are updated annually.",
+    "category": "scholarships",
+    "source": "https://nust.edu.pk/admissions/scholarships/"
+  },
+  {
+    "id": "hostel_028",
+    "text": "NUST provides on-campus hostel accommodation for both male and female students. Male hostels are located within the H-12 campus and accommodate thousands of students. Female hostels are also available within the campus with 24/7 security. Hostel categories and approximate fees: (1) Single room: PKR 12,000-15,000 per month. (2) Double sharing room: PKR 8,000-10,000 per month. (3) Triple sharing room: PKR 6,000-8,000 per month. Hostel fee includes basic utilities (electricity, water) up to a limit. All hostels have WiFi connectivity, common rooms, prayer areas, and laundry facilities. Mess (cafeteria) services are provided separately at approximately PKR 6,000-10,000 per month for three meals. Hostel allocation is based on distance from home and availability. Students from far-flung areas are given priority. Apply for hostel during admission enrollment.",
+    "category": "campus",
+    "source": "https://nust.edu.pk/campus-life/"
+  },
+  {
+    "id": "campus_life_029",
+    "text": "NUST's main campus in H-12, Islamabad spans approximately 1,500 acres in the scenic Margalla hills area. The campus is a fully self-contained community with state-of-the-art facilities. Academic facilities: modern lecture halls, computer labs, research labs, library with over 100,000 books and digital resources. Sports facilities: cricket ground, football fields, tennis courts, squash courts, swimming pool, gymnasiums, and basketball courts. Student societies: NUST has over 40 registered student societies including ACM NUST (computer science), ASME NUST (mechanical engineering), IEEE NUST, NUST Literary Society, NUST Drama Society, NUST Photography Club, ESN (Enactus NUST for social entrepreneurship), and many more. Events: Annual NUST Spring Festival (Fiesta), Tech Olympiad, Management Games, sports tournaments, and departmental nights make campus life vibrant.",
+    "category": "campus",
+    "source": "https://nust.edu.pk/campus-life/"
+  },
+  {
+    "id": "campus_facilities_030",
+    "text": "NUST campus in Islamabad offers extensive support facilities for students: (1) Health Center: A fully equipped on-campus hospital/clinic providing free medical consultations to students, with referrals to Pakistan Institute of Medical Sciences (PIMS) for specialist care. (2) Library: NUST's central library is one of Pakistan's best university libraries with digital access to IEEE, ACM, Elsevier, and other research databases. (3) Career Development Center (CDC): Helps students with internship placements, job fairs, CV writing workshops, and mock interviews. Top companies including Google, Microsoft, Engro, Shell, and Army organizations visit for recruitment. (4) Transport: NUST buses operate routes in Islamabad and Rawalpindi for day-scholars. (5) Cafeterias and food outlets are available across the campus. (6) Masjid (mosque) for prayers. (7) Banking ATMs on campus.",
+    "category": "campus",
+    "source": "https://nust.edu.pk/campus-life/"
+  },
+  {
+    "id": "ranking_031",
+    "text": "NUST (National University of Sciences and Technology) holds the distinction of being Pakistan's highest-ranked university in major international rankings. In QS World University Rankings 2024, NUST is ranked 241 globally, making it the only Pakistani university in the top 250 worldwide. NUST has consistently held the #1 position among Pakistani universities in QS rankings for multiple consecutive years. In THE (Times Higher Education) rankings, NUST also ranks among the top universities. NUST is ranked in the top 150 in QS Asia rankings. These rankings reflect NUST's strength in research output, faculty-to-student ratio, employer reputation, and international collaborations. NUST has research partnerships with MIT, Oxford, Cambridge, and other top global universities. Over 50% of NUST faculty hold PhDs from internationally recognized institutions.",
+    "category": "general",
+    "source": "https://nust.edu.pk/about/"
+  },
+  {
+    "id": "nust_overview_032",
+    "text": "NUST (National University of Sciences and Technology) was established in 1991 and is headquartered in Islamabad, Pakistan. It is a public research university primarily focused on science, technology, engineering, and mathematics (STEM) education. NUST has constituent colleges and campuses across Pakistan including in Karachi (PN Engineering College), Peshawar (MCS — Military College of Signals), and Rawalpindi (CMH Lahore Medical College and Institute of Dentistry). The main campus in H-12, Islamabad was established in 2009. NUST's Vice Chancellor is typically a senior military or civilian official of distinguished academic standing. The university offers programs from undergraduate to doctoral level across 22+ schools and institutes. NUST produces approximately 5,000 graduates annually and has an alumni network of over 70,000 professionals worldwide.",
+    "category": "general",
+    "source": "https://nust.edu.pk/about/"
+  },
+  {
+    "id": "cutoffs_overview_033",
+    "text": "NUST merit cutoffs vary significantly by program and fluctuate each year based on total applicants and seats available. 2025 approximate closing merits and typical year-on-year range: BS AI: ~81% (range 79–83%), BE Computer Eng: ~80% (78–82%), BS Computer Science: ~79% (77–81%), BS Software Eng: ~78% (76–80%), BE Electrical Eng: ~76.5% (74–79%), BS IT: ~73.5% (71–76%), BBA: ~70% (68–73%), BE Mechanical: ~72% (70–74%), BE Mechatronics: ~71% (69–73%), BE Civil: ~69% (67–71%), BE Industrial & Mfg: ~68% (66–70%), B.Arch: ~68% (66–70%), BS Biotechnology: ~68.5% (66–71%), BE Chemical: ~67% (65–69%), BS A&F: ~67% (65–69%), BS Math: ~66.5% (64–69%), BE Environmental: ~65% (63–67%), BS Materials Eng: ~65% (63–67%), BS Bioinformatics: ~64.5% (62–67%), BS Physics: ~64% (62–66%), BS Economics: ~63% (61–65%), BS Microbiology: ~62% (60–64%), BS Chemistry: ~62.5% (60–65%), BS Psychology: ~60% (58–62%), BS GIS: ~60% (58–62%), BS Development Studies: ~59% (57–61%). Cutoffs can shift by 1–3 points year to year — always treat them as approximate guidance, not guarantees.",
+    "category": "merit",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "career_cs_034",
+    "text": "Career prospects for NUST Computer Science and Engineering graduates are among the most lucrative in Pakistan. BS Computer Science graduates from NUST are hired by top tech companies including Systems Limited, NetSol Technologies, 10Pearls, Arbisoft, and international companies through remote work. Starting salaries range from PKR 60,000-150,000 per month for fresh graduates, with experienced graduates earning significantly more. Many NUST CS graduates move to USA, Canada, UK, and Middle East where salaries can reach USD 80,000-150,000 per year. NUST SEECS has active alumni in Silicon Valley companies like Google, Microsoft, Amazon, and Meta. Students interested in startups can leverage NUST's Technology Incubation Centre (TIC) for entrepreneurship support. MS and PhD pathways are also available both locally and through international fully-funded scholarships.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/seecs/"
+  },
+  {
+    "id": "career_engineering_035",
+    "text": "NUST engineering graduates (mechanical, civil, electrical, chemical) have strong job market prospects in Pakistan and abroad. Mechanical engineering graduates work with Pakistan's defense industries (HIT, POF, NESCOM), automotive sector, energy companies (SNGPL, SSGCL), and international manufacturing firms. Civil engineering graduates find employment with NHA, FWO, NESPAK, Frontier Works Organization, Aga Khan Development Network, and private construction companies. Electrical engineering graduates work with WAPDA, NTDC, FESCO, and telecom companies like Jazz, Telenor, and PTCL. Chemical engineering graduates join fertilizer companies (Engro Fertilizers, FFC), petrochemical firms, and pharmaceutical companies. Starting engineering salaries at NUST range from PKR 60,000-120,000 per month. Pakistan Engineering Council (PEC) registration is possible after completing the accredited 4-year BE degree.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/"
+  },
+  {
+    "id": "net_tips_036",
+    "text": "Expert tips for maximizing NET score at NUST: Mathematics tips — practice past 5 years of NET papers; focus on calculus (derivatives, integration), trigonometric identities, permutations & combinations, and coordinate geometry. Physics tips — understand concepts rather than memorizing formulas; practice numerical problems from mechanics (Newton's laws, projectile motion) and electricity/magnetism. Chemistry tips — memorize organic chemistry reactions, periodic table trends, and chemical equations; practice stoichiometry calculations. Intelligence tips — solve pattern-based questions; practice series completion, analogies, and logical reasoning daily. English tips — review basic grammar (tenses, prepositions, conjunctions); learn 20-30 new vocabulary words per day from GRE word lists. Time management — NET has about 200 questions in 120 minutes; practice finishing in time with 10-15 minutes for review. Avoid negative marking — NET typically has negative marking, so don't guess blindly. Best online resources for NET prep: Nustify at https://www.nustify.com/ (past papers and tips; also on Instagram & WhatsApp as 'nustify') and NUStrive at https://nustrive1.vercel.app/ (mock tests and NET guidance; also on Instagram & WhatsApp as 'NUStrive').",
+    "category": "net",
+    "source": "https://nust.edu.pk/admissions/net/"
+  },
+  {
+    "id": "merit_example_037",
+    "text": "Merit calculation worked examples for NUST: Example 1 (Engineering Student): NET score = 150/200, FSc = 990/1100 (90%), Matric = 990/1100 (90%). NET contribution = (150/200) × 75 = 56.25. FSc contribution = (990/1100) × 15 = 13.5. Matric contribution = (990/1100) × 10 = 9. Aggregate = 56.25 + 13.5 + 9 = 78.75% ≈ 79%. Eligible for: BS CS (~79% — borderline), BS SE (~78% — safe), BE EE, and many others. Example 2 (High scorer): NET = 170/200, FSc = 1020/1100, Matric = 1050/1100. NET contribution = (170/200) × 75 = 63.75. FSc contribution = (1020/1100) × 15 = 13.91. Matric contribution = (1050/1100) × 10 = 9.55. Aggregate = 87.21%. Comfortably eligible for most programs including BS AI. Example 3 (Business Student): NET = 140/200, FSc = 900/1100, Matric = 900/1100. NET contribution = (140/200) × 75 = 52.5. FSc contribution = (900/1100) × 15 = 12.27. Matric contribution = (900/1100) × 10 = 8.18. Aggregate = 72.95%. Eligible for BBA (cutoff ~70%), BS IT, and several engineering programs.",
+    "category": "merit",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "reserved_seats_038",
+    "text": "NUST reserves a percentage of seats in each program for special categories: (1) Armed Forces seats: A portion of seats are reserved for children of armed forces personnel (Army, Navy, Air Force, Rangers, FC). These candidates typically have a lower aggregate cutoff. (2) FATA/Tribal Areas seats: Reserved for students from former FATA and tribal areas of KP to promote regional representation. (3) Disabled persons: A small percentage (typically 2%) is reserved for persons with disabilities. (4) Foreign nationals: NUST accepts international students through special quota, particularly from friendly countries. (5) NUST employees' children may have reserved seats in some programs. (6) AJK and Gilgit-Baltistan: Regional seats are reserved for these areas. Students applying under reserved categories must provide relevant documentation (service card for armed forces, domicile for regional quotas, disability certificate, etc.).",
+    "category": "eligibility",
+    "source": "https://nust.edu.pk/admissions/eligibility/"
+  },
+  {
+    "id": "aggregate_improvement_039",
+    "text": "Strategies to improve NUST aggregate for better program eligibility: (1) Focus on NET — since it contributes 75% to aggregate, it is by far the most important factor. Going from 150 to 170 NET adds (20/200)×75 = 7.5 aggregate points, potentially opening up several more programs. (2) FSc improvement — if re-appearing for improvement exams, even a few extra marks help. Going from 950 to 1000 in FSc (out of 1100) adds (50/1100)×15 = 0.68 percentage points. Note FSc now contributes only 15%, so its impact is smaller than before. (3) Take all four NETs — you can appear in NET-1, NET-2, NET-3, and NET-4, and NUST uses your best score. This gives four chances to improve. (4) Use SAT — if you perform better on SAT, use that instead of NET (SAT ≥1100 required). (5) Prepare specifically for NET — it's a unique exam; coaching centers specializing in NET can significantly boost scores. (6) Matric improvement — limited impact (only 10%) but every point counts in competitive programs.",
+    "category": "merit",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "research_culture_040",
+    "text": "NUST has a strong research culture with over PKR 1 billion in annual research funding from HEC, government agencies, and industry. NUST has published thousands of research papers in international journals indexed in Scopus and Web of Science. Key research areas include: cybersecurity and AI at SEECS, renewable energy and robotics at SMME, water resources and earthquake engineering at SCEE, drug discovery and genomics at ASAB, materials science at SCME, and economic policy at S3H. NUST's research is recognized internationally — its H-index and citation count place it among the leading research universities in the developing world. Undergraduate students have opportunities to work as research assistants with faculty, which strengthens graduate school applications and professional profiles. NUST also hosts international conferences and workshops annually.",
+    "category": "general",
+    "source": "https://nust.edu.pk/research/"
+  },
+  {
+    "id": "transfer_041",
+    "text": "NUST generally does not accept lateral entry or transfer students from other universities into undergraduate programs. Students must join from the first semester. However, students who complete a 2-year BS program (previously) may be eligible for direct admission to the 3rd or 4th year depending on course equivalence — this is program-specific and students should contact NUST admissions directly. Students who fail to maintain the minimum CGPA (typically 2.0) may be placed on academic probation or dismissed. Dismissed students from NUST cannot re-enroll in the same program. If a student wants to change their program within NUST, they must submit a change of program application, which is subject to seat availability and performance in NUST. Program changes are most common in the first year.",
+    "category": "general",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "open_merit_042",
+    "text": "NUST admission is primarily on open merit — students are ranked purely by their calculated aggregate score across all eligible applicants. There is no interview or portfolio review for most programs (Architecture may require portfolio). Gender-wise, NUST has a mixed-gender campus with both male and female students in all programs. NUST does not have gender-based quotas for most programs — admission is purely merit-based regardless of gender. Female students often perform very well and are well-represented in SEECS and science programs. The merit list is published publicly on NUST's website so all applicants can see where they stand. Multiple programs can be listed in order of preference during application — if you qualify for your first choice, you get that; otherwise NUST allocates your highest-ranked available choice.",
+    "category": "general",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "provincial_breakdown_043",
+    "text": "NUST admits students from all provinces and regions of Pakistan. The student body is diverse, representing all four provinces plus AJK, Gilgit-Baltistan, and tribal areas. Punjab students typically form the majority due to population size and number of applicants. Students from Sindh, KP, Balochistan, and smaller regions are encouraged to apply and benefit from provincial quota seats. NUST Islamabad campus is the main academic hub, while NUST also has presence in Karachi (PN Engineering College), Rawalpindi (CMH Lahore Medical College), and other cities. Military College of Signals (MCS) in Rawalpindi is a constituent college of NUST offering engineering programs. PN Engineering College in Karachi offers naval engineering programs. These constituent colleges may have different admission criteria.",
+    "category": "general",
+    "source": "https://nust.edu.pk/about/"
+  },
+  {
+    "id": "application_portal_044",
+    "text": "NUST online application process: Students apply through NUST's official admissions portal at nust.edu.pk. The portal requires: (1) Creating an account with a valid email address. (2) Filling in personal information (name, CNIC, date of birth, domicile). (3) Entering academic information (Matric marks, FSc marks, NET score or SAT score). (4) Selecting up to 5 programs in order of preference. (5) Uploading scanned documents (CNIC, mark sheets, photos). (6) Paying the application processing fee (approximately PKR 1,500-3,500). Applications are typically processed within 2-4 weeks after NET results. Students can track their application status online. NUST uses a fully computerized merit system — there is no manual intervention in the merit calculation process, making it transparent and fair.",
+    "category": "general",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "merit_list_reading_045",
+    "text": "How to read NUST merit lists: NUST publishes merit lists on its official website after the application deadline. The merit list shows: Rank (position in merit), Application number, Name, Aggregate percentage, Program allocated, and Status (Selected/Waiting/Not Selected). First merit list: Only the top-ranked applicants (equal to seat count) are shown as Selected. Students shown as Selected must confirm their seat by paying fees within 7 days; otherwise their seat is forfeited. Second merit list: Published if seats become vacant after first merit list acceptances. Students on the waiting list move up. Sometimes a third merit list is published if seats remain. The closing merit (last student admitted) is the cutoff for that year. Historical cutoffs are available from NUST for research purposes. If your program preference shows 'Not Selected', you may still be allocated your second or third program choice.",
+    "category": "merit",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "fsc_improvement_046",
+    "text": "FSc improvement exams and NUST admission: Students can appear for FSc improvement exams through Punjab/Federal/KP Board to boost their marks. The improved marks can be used in the NUST aggregate calculation. However, students should note that improvement exams take an extra year, which delays admission. Some students prefer to re-appear in NET (3 chances per year) rather than wait for FSc improvement. For NUST, the latest FSc result (improvement exam result if taken) is used in the aggregate. Students with an FSc improvement in progress may apply conditionally with their current result, then update when improvement result is announced. NUST's admissions office should be consulted for the exact policy for conditional admissions with pending improvement results.",
+    "category": "eligibility",
+    "source": "https://nust.edu.pk/admissions/eligibility/"
+  },
+  {
+    "id": "dual_degree_047",
+    "text": "NUST offers opportunities for high-achieving students to pursue additional qualifications: (1) Double degree/minor programs: Some schools allow students to take courses from other programs for a minor concentration. For example, CS students can take management courses for a Business minor. (2) International exchange programs: NUST has student exchange agreements with universities in China, Germany, USA, South Korea, and other countries. Selected students study abroad for one or two semesters. (3) Summer research programs: Many NUST students participate in summer research at partner universities. (4) Fast-track to MS: High CGPA undergraduates (typically ≥3.5) can apply for fast-track admission to NUST's MS programs. (5) Industry certifications: NUST's curriculum often incorporates certifications like Cisco CCNA, Microsoft Azure, or AWS, depending on the program. These opportunities make NUST graduates more competitive globally.",
+    "category": "general",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "ms_phd_048",
+    "text": "NUST offers graduate programs (MS and PhD) across all its schools. MS programs are typically 1.5-2 years and PhD programs are 3-5 years. Admission to MS requires a relevant BS degree with minimum CGPA 2.5-3.0, and a NUST Graduate Admission Test (NGAT) or GRE score. Many MS and PhD programs offer full or partial fee waivers with research assistantships for students working with faculty on funded projects. NUST's MS/PhD graduates are well-positioned for faculty positions, research roles, and senior industry positions. For international students, NUST offers HEC-funded scholarships for PhD programs. NUST has over 2,000 graduate students enrolled at any time. Graduate programs are available in CS, EE, mechanical, civil, business, economics, and all science disciplines.",
+    "category": "general",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "architecture_detail_049",
+    "text": "Bachelor of Architecture (B.Arch) at SADA (School of Art, Design and Architecture) is NUST's 5-year professional degree program. With only 40 seats, it is one of the most selective programs with a cutoff of approximately 73%. The program combines technical engineering skills with creative design thinking. Students take courses in architectural design studios, structural systems, building services, urban design, architectural history, and environmental systems. The curriculum culminates in a design thesis project. SADA has excellent design studios, model-making workshops, and a digital fabrication lab. Architecture graduates are eligible for Pakistan Council of Architects and Town Planners (PCATP) registration and can practice as licensed architects. Career paths include architectural firms, real estate development, urban planning authorities, and academics. Internationally, NUST B.Arch graduates have been accepted to top architecture schools for graduate studies.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/sada/"
+  },
+  {
+    "id": "gis_detail_050",
+    "text": "BS Geographical Information Systems at IGIS (Institute of Geographical Information Systems) is one of Pakistan's only dedicated GIS undergraduate programs. With 30 seats and a cutoff of approximately 65%, IGIS offers a specialized program in spatial data science. Courses cover: ArcGIS, QGIS, remote sensing, satellite imagery analysis, GPS technology, cartography, land use mapping, and spatial statistics. Students learn to use satellite data for environmental monitoring, agriculture, disaster risk assessment, and urban planning. IGIS has partnerships with survey departments, SUPARCO (Pakistan's space agency), and international GIS organizations. Graduates work with government mapping agencies, UN agencies, NGOs working in disaster management, agriculture departments, and private remote sensing companies. The program increasingly overlaps with data science and machine learning for spatial applications.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/igis/"
+  },
+  {
+    "id": "international_students_051",
+    "text": "NUST welcomes international students from all countries, particularly from friendly nations. International students can apply through the NUST's international admissions portal. Requirements for international students: valid passport, academic transcripts equivalented by IBCC or HEC, SAT score ≥1100 or NET exam appearance, and proof of English proficiency (if applicable). Tuition fees for international students are typically higher — around USD 2,000-4,000 per semester depending on program. NUST has an International Students Office that assists with visa sponsorship letters, accommodation, and campus orientation. Countries with high representation include Afghanistan, Sri Lanka, China, Saudi Arabia, UAE, and various African countries. Some international students receive full scholarships from their home governments or bilateral agreements between Pakistan and their country. NUST's English-medium instruction makes it accessible to international students.",
+    "category": "eligibility",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "study_tips_nust_052",
+    "text": "Tips for succeeding academically at NUST once admitted: (1) First year is crucial — the NUST curriculum is rigorous and the first year typically covers heavy mathematics and physics. Struggling in first year can affect CGPA for the entire degree. (2) Use faculty office hours — NUST professors are accessible and office hours are valuable. (3) Join study groups — collaborative learning is effective for engineering courses. (4) Start assignments early — NUST has a culture of last-minute submissions leading to poor quality work; plan ahead. (5) Use the library and database access — NUST provides free access to IEEE Xplore, ACM Digital Library, ScienceDirect, and other research databases. (6) Pursue internships from summer after 2nd year — industry experience is valued in final year and job applications. (7) Participate in student societies — they build soft skills, networks, and enhance your resume. (8) Maintain CGPA above 3.0 for scholarship eligibility.",
+    "category": "general",
+    "source": "https://nust.edu.pk/"
+  },
+  {
+    "id": "coaching_centers_053",
+    "text": "Several coaching academies in Pakistan specialize in NUST NET preparation. In Islamabad/Rawalpindi: KIPS (Knowledge Institute of Professional Studies), Wisdom Academy, The Last Bench, Smart Brain. In Lahore: KIPS Lahore, PGC Academy, Zion Educational Institutes. In Karachi: Hyderi Foundation, Allied Schools coaching. These coaching centers offer: full-length mock NET tests in computer-based format, topic-wise practice books for each NET section, small group and one-on-one classes, past paper analysis sessions, and score improvement strategies. Cost ranges from PKR 15,000-50,000 for 3-6 month courses. Online coaching is also available through platforms like Sabaq, Virtual University learning resources, and YouTube channels dedicated to NET preparation. Self-study using FSc textbooks plus past NET papers is also a viable strategy if supplemented with consistent practice. TOP RECOMMENDED ONLINE PLATFORMS: (1) Nustify — https://www.nustify.com/ — dedicated NUST prep platform with past papers and tips. Follow on Instagram and WhatsApp as 'nustify'. (2) NUStrive — https://nustrive1.vercel.app/ — mock tests and NET guidance. Follow on Instagram and WhatsApp as 'NUStrive'.",
+    "category": "net",
+    "source": "https://nust.edu.pk/admissions/net/"
+  },
+  {
+    "id": "postadmission_054",
+    "text": "After receiving NUST admission offer, students must complete enrollment formalities. Enrollment process: (1) Pay the first semester fee within 7 days of merit list publication (deadline is strict). (2) Download and print admission letter from NUST portal. (3) Visit NUST campus on the designated enrollment day with original documents. (4) Submit original documents for verification (CNIC, mark sheets, certificates). (5) Complete biometric registration (fingerprints, photo). (6) Receive student ID card and login credentials for NUST IT systems. (7) Apply for hostel accommodation if required. (8) Get your class schedule and course registration done. (9) Attend orientation week — NUST holds a comprehensive orientation for freshmen covering campus facilities, academic rules, student societies, and safety briefings. Late fee payment or missing enrollment day without prior communication can result in seat cancellation.",
+    "category": "general",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "cgpa_system_055",
+    "text": "NUST follows a 4.0 GPA scale for academic grading. Grade points: A+ = 4.0 (90-100%), A = 4.0 (85-89%), A- = 3.7 (80-84%), B+ = 3.3 (75-79%), B = 3.0 (70-74%), B- = 2.7 (65-69%), C+ = 2.3 (60-64%), C = 2.0 (55-59%), C- = 1.7 (50-54%), D = 1.0 (45-49%), F = 0.0 (below 45%). Minimum passing grade in each course is typically C or D depending on the course type. Academic probation is triggered if CGPA falls below 2.0. Students must maintain CGPA ≥ 2.5 to apply for graduate programs after NUST. Scholarship maintenance typically requires CGPA ≥ 3.0 or higher. Students can repeat a failed course to improve their grade, with the new grade replacing the old one in CGPA calculation (institutional policy may vary). The graduation requirement is typically CGPA ≥ 2.0.",
+    "category": "general",
+    "source": "https://nust.edu.pk/"
+  },
+  {
+    "id": "ai_program_detail_056",
+    "text": "BS Artificial Intelligence at SEECS (NUST) is a cutting-edge program designed for the AI era. Launched in recent years, this program covers machine learning fundamentals, deep neural networks, computer vision, natural language processing, reinforcement learning, AI ethics, and AI applications in healthcare, finance, and autonomous systems. Students learn Python, TensorFlow, PyTorch, and other AI frameworks from an early stage. The program has strong connections with industry through NUST's Technology Incubation Centre. Graduates are well-positioned for roles as AI engineers, data scientists, ML researchers, and AI product managers. With Pakistan's growing tech industry and global demand for AI professionals, BS AI graduates from NUST can command salaries of USD 70,000-120,000 in international markets. The program has 50 seats with a cutoff of approximately 87%, making it highly selective.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/seecs/"
+  },
+  {
+    "id": "bioinformatics_detail_057",
+    "text": "BS Bioinformatics at ASAB (NUST) is an interdisciplinary program that bridges biological sciences and computer science. The curriculum covers molecular biology, genetics, database management (biological databases like NCBI, UniProt), programming (Python, R, Perl for bioinformatics), sequence alignment algorithms, phylogenetics, structural bioinformatics, and systems biology. With the rise of genomics and personalized medicine, bioinformatics professionals are in high demand globally. Graduates work in pharmaceutical companies for drug discovery, research hospitals for genomic analysis, agricultural biotechnology, and academic research. ASAB has modern computational biology facilities and collaborates with international genomics centers. With only 30 seats and a cutoff of ~70%, this program is accessible to students with strong biology and math backgrounds. Eligibility requires FSc Pre-Medical (Biology mandatory).",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/asab/"
+  },
+  {
+    "id": "economics_program_058",
+    "text": "BS Economics at S3H (NUST) is a rigorous economics program combining theory with quantitative methods. The curriculum includes microeconomics and macroeconomics theory, econometrics and statistical analysis, development economics, international trade, public finance, monetary economics, and Pakistani economy analysis. Students learn tools like STATA, EViews, and R for economic data analysis. The program is unique in Pakistan for its integration of economics with data science skills. Graduates work at State Bank of Pakistan, commercial banks, HEC, UNDP, World Bank, IMF, think tanks like PIDE and Tabadlab, and academia. With 60 seats and a cutoff of ~68.5%, this program is open to FSc students from all groups. The program has strong linkages with government economic policy institutions. NUST S3H also regularly organizes economic policy seminars with distinguished speakers.",
+    "category": "programs",
+    "source": "https://nust.edu.pk/schools/s3h/"
+  },
+  {
+    "id": "application_checklist_059",
+    "text": "Complete NUST 2026 Application Checklist: Before applying — (1) Appear in NET or have SAT score ≥1100. (2) Collect FSc and Matric DMCs. (3) Get IBCC equivalence if O/A Level (allow 4-6 weeks). (4) Obtain domicile certificate from local union council/nadra. (5) Get character certificate from last school/college. (6) Get CNIC or bay-form. (7) Take passport photographs. During application — (9) Calculate your aggregate using the formula to estimate eligibility. (10) Create NUST account at nust.edu.pk. (11) Fill out the online form carefully — double check marks entered. (12) List program preferences strategically (most competitive first). (13) Upload all documents in required format (typically PDF or JPG, specific file size limits). (14) Pay the application fee. (15) Submit and save your application receipt. After applying — (16) Monitor NUST website for merit list announcement. (17) Respond promptly if selected.",
+    "category": "general",
+    "source": "https://nust.edu.pk/admissions/"
+  },
+  {
+    "id": "industry_linkages_060",
+    "text": "NUST has strong industry linkages that benefit students through internships, research funding, and job placements. Key industry partners include: Technology sector — Microsoft Pakistan, Google (remote), Jazz Digital, Systems Limited, 10Pearls, Arbisoft, NetSol; Energy sector — OGDCL, PPL, SNGPL, SSGCL, NEPRA; Defense — NESCOM, HIT, POF, NDU; Banking — State Bank, HBL, UBL, MCB, Meezan Bank; Multinationals — Shell Pakistan, Engro, Unilever, Procter & Gamble, Siemens; Development organizations — ADB, World Bank, UNDP, USAID. NUST's Career Development Center (CDC) facilitates on-campus recruitment drives where hundreds of companies visit annually. The placement rate for NUST graduates is estimated at over 80% within 6 months of graduation. NUST's Technology Incubation Centre (TIC) has incubated numerous successful startups, and NUST entrepreneurs have raised significant funding from local and international investors.",
+    "category": "general",
+    "source": "https://nust.edu.pk/industry/"
+  },
+  {
+    "id": "net_vs_sat_061",
+    "text": "NET vs SAT for NUST admission: Both are accepted but have different characteristics. NET (NUST Entry Test): Specifically designed for NUST, based on FSc curriculum, conducted 3 times per year (Feb, Apr, Jul), 200 marks, computer-based at designated centers across Pakistan, registration fee is relatively low. SAT (Scholastic Assessment Test): International test accepted by universities worldwide, conducted multiple times per year at British Council and other international test centers, expensive (approximately USD 55-100), minimum score of 1100 required, focuses on Math and Evidence-Based Reading/Writing. If you have already taken SAT and scored ≥1100, you can use it directly. If your SAT score is below 1100, you must take NET. If you're a Pakistani FSc student, NET is generally more aligned with your preparation. O/A Level students sometimes find SAT more natural since both follow international curricula.",
+    "category": "net",
+    "source": "https://nust.edu.pk/admissions/net/"
+  },
+  {
+    "id": "nust_vs_other_062",
+    "text": "NUST compared to other Pakistani universities: NUST vs GIKI (Ghulam Ishaq Khan Institute): GIKI is strong in engineering, located in Topi KP, known for very rigorous curriculum and industry exposure. NUST is broader with more programs and better international rankings. NUST vs LUMS (Lahore University of Management Sciences): LUMS excels in business and law, NUST excels in engineering and technology. LUMS is private with higher fees. NUST vs UET Lahore: UET is public engineering university with very low fees but fewer research resources. NUST has better rankings and research. NUST vs COMSATS: COMSATS is more accessible (lower cutoffs) but NUST has better reputation and rankings. NUST vs UMT/UCP: These are private universities with different focus areas. For engineering and technology, NUST remains the top choice in Pakistan by international rankings and employer reputation.",
+    "category": "general",
+    "source": "https://nust.edu.pk/"
+  },
+  {
+    "id": "math_syllabus_net_063",
+    "text": "NET Mathematics syllabus details (60 marks section): The mathematics section in NET is based on FSc Part 1 and Part 2 mathematics. Key topics: Algebra — complex numbers, sequences and series (arithmetic, geometric, harmonic), matrices and determinants, partial fractions, permutations and combinations, probability, binomial theorem. Trigonometry — trigonometric identities, inverse trig functions, solution of triangles, height and distance problems. Calculus — limits and continuity, differentiation (chain rule, product/quotient rule), integration (definite and indefinite), applications of calculus (maxima/minima, area under curve). Analytical Geometry — lines, circles, conic sections (parabola, ellipse, hyperbola). Vectors — vector algebra, dot product, cross product. This section has the highest marks (60 out of 200) and requires strong problem-solving speed. Daily practice of 20-30 math problems is recommended during preparation.",
+    "category": "net",
+    "source": "https://nust.edu.pk/admissions/net/"
+  },
+  {
+    "id": "physics_syllabus_net_064",
+    "text": "NET Physics syllabus details (40 marks section): Based on FSc Part 1 and Part 2 physics. Key topics: Mechanics — Newton's laws, work/energy/power, momentum and impulse, circular motion, gravitation, fluid mechanics (Bernoulli's principle, viscosity). Waves and Oscillations — simple harmonic motion, wave properties, sound waves, electromagnetic spectrum. Thermodynamics — heat transfer, laws of thermodynamics, Carnot engine. Electricity and Magnetism — Coulomb's law, electric field, Gauss's law, capacitors, magnetic force, Faraday's law, Lenz's law. Electronics — transistors, rectifiers, logic gates. Modern Physics — photoelectric effect, Compton effect, nuclear reactions, half-life, radioactivity. For NET physics, focus on numerical problems and conceptual understanding. Understanding the physics behind the formulas (not just memorizing) leads to better performance.",
+    "category": "net",
+    "source": "https://nust.edu.pk/admissions/net/"
+  },
+  {
+    "id": "chemistry_syllabus_net_065",
+    "text": "NET Chemistry syllabus details (40 marks section — for pre-engineering students choosing chemistry): Based on FSc Part 1 and Part 2 chemistry. Key topics: Physical Chemistry — atomic structure, chemical bonding (ionic, covalent, metallic), periodic properties, states of matter (gas laws, kinetic theory), thermochemistry, chemical kinetics and equilibrium, electrochemistry, solutions. Inorganic Chemistry — s-block and p-block elements, transition metals, coordination compounds, qualitative analysis. Organic Chemistry — IUPAC nomenclature, functional groups (alkanes, alkenes, alkynes, alcohols, aldehydes, ketones, carboxylic acids, amines), reaction mechanisms (addition, substitution, elimination), polymers and biomolecules. Analytical techniques — chromatography, spectroscopy basics. For NET chemistry, memorize reactions and organic conversion mechanisms — these are high-scoring areas if you know them well.",
+    "category": "net",
+    "source": "https://nust.edu.pk/admissions/net/"
+  },
+  {
+    "id": "eligibility_ics_066",
+    "category": "eligibility",
+    "text": "ICS (Intermediate in Computer Science) eligibility at NUST: ICS stands for Intermediate in Computer Science, a Pakistani intermediate qualification with Physics, Mathematics, and Computer Science/Computer Studies as core subjects. ICS is NOT the Indian Civil Service exam. As per PEC regulation No PEC/EAD/46-VCCM/Regulations/2023 dated 30 March 2023, ICS candidates ARE eligible to apply for ALL Engineering programmes at NUST (SEECS, SMME, SCEE, SCME), provided they clear Chemistry as a remedial subject/course in the 1st semester after admission. ICS students are also eligible for Computing programmes (BS CS, BS AI, BS SE, BS IT at SEECS) and Business programmes (NBS). Summary: ICS students CAN apply for Engineering programmes at NUST — they must pass a Chemistry remedial course in semester 1 after joining.",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "eligibility_premedical_engineering_067",
+    "category": "eligibility",
+    "text": "FSc Pre-Medical students applying to Engineering programmes at NUST: Pre-Medical qualification has Biology, Chemistry, and Physics but does NOT include Mathematics. Engineering programmes (SEECS, SMME, SCEE, SCME) require Mathematics as a compulsory subject. Therefore, FSc Pre-Medical students are NOT directly eligible for Engineering programmes. However, if a Pre-Medical student has appeared in an additional Mathematics paper (offered by Punjab Board, Federal Board, etc.), they may become eligible for Engineering programmes subject to the following: (1) The Mathematics result must be confirmed and included in the FSc certificate or an official result notification. (2) A student who has appeared but is awaiting the additional Mathematics result can apply provisionally, but admission will only be confirmed once the Mathematics result is received and minimum 60% is achieved. (3) They must appear in the Engineering NET (which includes Mathematics) and score adequately. If the additional Mathematics result is still awaited, they should contact NUST admissions directly at ugadmissions.nust.edu.pk for guidance on conditional application.",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "eligibility_premedical_cs_068",
+    "category": "eligibility",
+    "text": "FSc Pre-Medical students applying for BS Computer Science and other computing programmes at NUST: For BS Computer Science, BS Artificial Intelligence, BS Software Engineering, and BS Information Technology at SEECS, the eligibility requirement is FSc Pre-Engineering OR FSc Pre-Medical IF the candidate has Computer Science or Information Technology as a subject. If a Pre-Medical student has Computer Science or IT as one of their FSc subjects, they are eligible to apply for BS CS, BS AI, BS SE, and BS IT at SEECS. If the Pre-Medical student does NOT have Computer Science or IT as a subject, they are not eligible for these programmes. Pre-Medical students are fully eligible for ASAB programmes (Biotechnology, Bioinformatics, Microbiology) and NBS programmes (BBA, Accounting & Finance).",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "eligibility_arts_humanities_069",
+    "category": "eligibility",
+    "text": "Arts and Humanities students applying to NUST computing or engineering programmes: Candidates with HSSC (Higher Secondary School Certificate) or A-Level in Arts, Humanities, or General Science group are generally NOT eligible for computing programmes (BS CS, BS AI, BS SE, BS IT at SEECS) or Engineering programmes (SMME, SCEE, SCME). These programmes require a science background with Mathematics and Physics. However, Arts/Humanities students are eligible for Social Sciences programmes at S3H (BS Economics, BS Psychology, BS Development Studies) and Business programmes at NBS (BBA, BS Accounting & Finance). A-Level students must obtain an IBCC equivalence certificate before applying. If an Arts student has taken additional Mathematics and Physics subjects at A-Level, eligibility for computing programmes depends on whether NUST's admissions office accepts their subject combination — they should verify directly at ugadmissions.nust.edu.pk.",
+    "source": "https://ugadmissions.nust.edu.pk/"
+  },
+  {
+    "id": "faq_multiple_programmes_070",
+    "category": "admissions_process",
+    "text": "Can I apply for more than one programme at NUST? Yes, if you meet the eligibility criteria for each programme you may apply for more than one programme. Candidates can select multiple programme preferences in their application on the NUST admissions portal (ugadmissions.nust.edu.pk). You are not restricted to a single programme choice.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_rechecking_net_071",
+    "category": "net",
+    "text": "Can I apply for rechecking of NUST Entry Test (NET) result? No. Rechecking or re-evaluation of the NET answer sheet is not allowed. However, candidates can request a copy of their marked answer sheet for their own review. Queries should be directed to NUST admissions office.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_copy_net_result_072",
+    "category": "net",
+    "text": "Can I get a copy of my NUST Entry Test (NET) result? Yes, candidates can obtain a copy of their NET result / marked answer sheet. Contact the NUST admissions office or check the ugadmissions.nust.edu.pk portal for the procedure to request your result copy.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_sample_papers_net_073",
+    "category": "net",
+    "text": "Can I get sample test papers for NUST Entry Test (NET)? Yes, NUST provides sample/past papers to help candidates prepare for the NET. Sample papers are available on the official NUST website at nust.edu.pk/admissions/net/ or through the admissions portal ugadmissions.nust.edu.pk. These papers give an idea of the question format and difficulty level.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_expatriate_category_074",
+    "category": "eligibility",
+    "text": "Do I fall under the Expatriate Students category at NUST? You fall under the Expatriate Students category if you are a Pakistani national who has been living abroad (outside Pakistan) and obtained your intermediate / A-Level qualification from a foreign institution OR if you hold dual nationality. Expatriate students apply through a separate quota and may have different admission requirements. If you completed your schooling entirely in Pakistan, you are a regular domestic candidate, not an expatriate. For detailed criteria, check ugadmissions.nust.edu.pk or contact NUST admissions.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_scholarship_overview_075",
+    "category": "scholarships",
+    "text": "Does NUST offer scholarships or financial assistance? Yes, NUST offers several scholarship and financial assistance programmes: (1) Merit Scholarships — awarded to top-ranking students each semester based on CGPA. (2) Need-based Financial Assistance — for students who cannot afford tuition fees; requires financial documents. (3) HEC Scholarships — government scholarships facilitated through Higher Education Commission Pakistan. (4) NUST also has partnerships with various organisations for additional awards. Students must apply separately for financial assistance through the NUST Student Financial Assistance Office. For details visit nust.edu.pk/admissions/scholarships/.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_academic_backgrounds_eligibility_076",
+    "category": "eligibility",
+    "text": "For various academic backgrounds, which UG disciplines are available at NUST? FSc Pre-Engineering (Physics, Chemistry, Maths): eligible for all Engineering programmes (SEECS, SMME, SCEE, SCME), Computing programmes (BS CS, BS AI, BS SE, BS IT), and Science programmes (SNS). FSc Pre-Medical (Biology, Chemistry, Maths): eligible for Life Sciences (BS Biotechnology, BS Microbiology, BS Bioinformatics at ASAB), BS Chemistry (SNS); can apply for Engineering provisionally with additional Maths paper. ICS (Physics, Maths, Computer Science): eligible for all Engineering and Computing programmes; must clear Chemistry as remedial subject in Semester 1 for Engineering. FSc General Science / Arts / Humanities: eligible for S3H (BS Economics, BS Psychology, BS Development Studies) and NBS (BBA, BS Accounting & Finance); NOT eligible for Engineering or Computing. A-Level students: must have IBCC equivalence certificate; subject combination determines programme eligibility similar to FSc rules above. O-Level / Matric with A-Level: IBCC equivalence required for both Matric and A-Level. For full eligibility details visit ugadmissions.nust.edu.pk.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_age_limit_077",
+    "category": "eligibility",
+    "text": "Is there any age limit for NUST Undergraduate Admission? No. There is no age limit for undergraduate admission at NUST. Candidates of any age who meet the academic eligibility criteria may apply.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_fsc_part1_078",
+    "category": "eligibility",
+    "text": "Can FA/FSc Part-I students apply to NUST? Yes. FA/FSc Part-I candidates can apply on the basis of their Part-I results. The marks entered for FSc Part-I will be used for merit generation. However, on joining NUST, the candidate must have secured 60% or more marks in the complete FSc Part-II result.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_dae_eligibility_079",
+    "category": "eligibility",
+    "text": "Can DAE (Diploma of Associate Engineering) candidates apply to NUST Engineering programmes? Yes. DAE candidates can apply for admission in selected Engineering programmes on open merit, provided they completed DAE with a minimum of 60% marks in both Matric and in DAE itself.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_net_negative_marking_080",
+    "category": "net",
+    "text": "Is there negative marking in the NUST Entry Test (NET)? No. There is no negative marking in the NET. Unanswered questions do not reduce your score. Candidates should attempt all questions.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_net_calculator_081",
+    "category": "net",
+    "text": "Are calculators allowed in the NUST Entry Test (NET)? No. Calculators are not allowed during the NUST Entry Test. All calculations must be done mentally or on rough paper provided at the test centre.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_net_frequency_series_082",
+    "category": "net",
+    "text": "How many times is the NUST Entry Test (NET) conducted per year? NUST conducts the entry test in three NET series every year: Series 1 (typically December), Series 2 (typically March), and Series 3 (typically June/July). Candidates who already appeared in any NET series during the current admission cycle can also update their programme preferences while applying for Series 4 or after merit announcement, before the selection process begins. The best score across all series is used for merit.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_net_multiple_attempts_083",
+    "category": "net",
+    "text": "Can a candidate appear in the NUST Entry Test (NET) more than once? Yes. Candidates can sit the NET more than once to improve their score. In any single series a candidate may only sit the test once. The best score across all attempts is used for merit calculation. There is no penalty for attempting multiple times.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_net_format_cbt_084",
+    "category": "net",
+    "text": "What is the format of the NUST Entry Test (NET)? The NET consists of 200 MCQs to be completed in 3 hours (180 minutes). Each question has four answer choices. There is no negative marking. NUST conducts the NET in two formats: (1) Computer-Based Test (CBT) — conducted at NUST Main Campus Islamabad and NUST Balochistan Campus Quetta, with two sessions daily on multiple days. Candidates choose their preferred date and session. Results uploaded within 24 hours. (2) Paper-Based Test — conducted at Karachi and Gilgit centres. Results available within 5–7 working days. The exact venue is printed on the candidate's admit card.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_net_test_centres_085",
+    "category": "net",
+    "text": "Where are the NUST Entry Test (NET) test centres? NET is conducted at four locations in Pakistan: (1) Islamabad — NUST Main Campus H-12, Computer-Based format. (2) Quetta — NUST Balochistan Campus, Computer-Based format. (3) Karachi — Paper-Based format, exact venue on admit card. (4) Gilgit — Paper-Based format, exact venue on admit card. Candidates select their preferred centre when registering for the NET.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_net_result_timing_086",
+    "category": "net",
+    "text": "When is the NUST Entry Test (NET) result declared? For the Computer-Based NET (Islamabad/Quetta), results are uploaded within 24 hours of the test. For the Paper-Based NET (Karachi/Gilgit), results are available within 5 to 7 working days. Results can be checked by entering your Roll Number on the NUST admissions portal at ugadmissions.nust.edu.pk.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_application_fee_087",
+    "category": "admissions_process",
+    "text": "What is the NUST application processing fee? Pakistani nationals and dual-nationality holders: PKR 5,000 (or USD 40). For ACT/SAT International seat applicants: PKR 10,000 (or USD 80). Foreign nationals (non-Pakistani): PKR 10,000 (or USD 80). The fee is deposited at any branch of Habib Bank Limited (HBL) using the fee invoice generated after successful online registration. The application processing fee is neither refundable nor transferable.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_application_once_per_year_088",
+    "category": "admissions_process",
+    "text": "How many times a year can one apply for NUST UG admission? The NUST undergraduate admission process is conducted once a year, to facilitate commencement of the academic year in Fall. There is no Spring intake for undergraduate programmes.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_documents_not_needed_online_089",
+    "category": "admissions_process",
+    "text": "Are documents required at the time of NUST online application? No. The online registration system does not require document or credential attachments during the application submission. Documents are only required for verification during the selection and admission process for shortlisted or selected candidates.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_foreign_national_apply_090",
+    "category": "eligibility",
+    "text": "Can a foreign national (non-Pakistani) apply to NUST? Yes. If you do not hold Pakistani nationality (no CNIC or NICOP), you can apply as an international or foreign student. You can apply on the basis of NET or ACT/SAT scores on an international seat. Tuition fee and charges are payable at rates defined for foreign nationals, which are higher than domestic rates. Foreign nationals must provide a valid passport number during registration.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  },
+  {
+    "id": "faq_sat_national_vs_international_091",
+    "category": "admissions_process",
+    "text": "What is the difference between National and International SAT/ACT seats at NUST? Admission on ACT/SAT basis has two categories: (1) National seats — candidates pay tuition fee and charges in Pakistani Rupees at domestic rates. (2) International seats — candidates pay at rates defined for international students (higher). International seats are available to foreign nationals and Pakistanis holding dual nationality. Candidates selected on an international seat cannot be converted to a national seat.",
+    "source": "https://nust.edu.pk/faq-category/ug-admission/"
+  }
+]

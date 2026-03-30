@@ -1,0 +1,38 @@
+{
+  "_note": "PERMANENT reference cutoffs. Do NOT modify unless officially updated. This file is never overwritten by the scraper refresh.",
+  "formula": {
+    "net_weight": 75,
+    "fsc_weight": 15,
+    "matric_weight": 10,
+    "net_max": 200,
+    "description": "Aggregate = (NET/200 × 75) + (FSc/FSc_Total × 15) + (Matric/Matric_Total × 10)"
+  },
+  "cutoffs": [
+    {"name": "BS Artificial Intelligence",              "school": "SEECS", "cutoff": 81.0},
+    {"name": "BE Computer Engineering",                 "school": "SEECS", "cutoff": 80.0},
+    {"name": "BS Computer Science",                     "school": "SEECS", "cutoff": 79.0},
+    {"name": "BS Software Engineering",                 "school": "SEECS", "cutoff": 78.0},
+    {"name": "BE Electrical Engineering",               "school": "SEECS", "cutoff": 76.5},
+    {"name": "BS Information Technology",               "school": "SEECS", "cutoff": 73.5},
+    {"name": "BE Mechanical Engineering",               "school": "SMME",  "cutoff": 72.0},
+    {"name": "BE Mechatronics & Control Engineering",   "school": "SMME",  "cutoff": 71.0},
+    {"name": "BBA",                                     "school": "NBS",   "cutoff": 70.0},
+    {"name": "BE Civil Engineering",                    "school": "SCEE",  "cutoff": 69.0},
+    {"name": "BS Biotechnology",                        "school": "ASAB",  "cutoff": 68.5},
+    {"name": "BE Industrial & Manufacturing Engineering","school": "SMME",  "cutoff": 68.0},
+    {"name": "Bachelor of Architecture",                "school": "SADA",  "cutoff": 68.0},
+    {"name": "BE Chemical Engineering",                 "school": "SCME",  "cutoff": 67.0},
+    {"name": "BS Accounting & Finance",                 "school": "NBS",   "cutoff": 67.0},
+    {"name": "BS Mathematics",                          "school": "SNS",   "cutoff": 66.5},
+    {"name": "BE Environmental Engineering",            "school": "SCEE",  "cutoff": 65.0},
+    {"name": "BS Materials Engineering",                "school": "SCME",  "cutoff": 65.0},
+    {"name": "BS Bioinformatics",                       "school": "ASAB",  "cutoff": 64.5},
+    {"name": "BS Physics",                              "school": "SNS",   "cutoff": 64.0},
+    {"name": "BS Economics",                            "school": "S3H",   "cutoff": 63.0},
+    {"name": "BS Chemistry",                            "school": "SNS",   "cutoff": 62.5},
+    {"name": "BS Microbiology",                         "school": "ASAB",  "cutoff": 62.0},
+    {"name": "BS Psychology",                           "school": "S3H",   "cutoff": 60.0},
+    {"name": "BS Geographical Information Systems",     "school": "IGIS",  "cutoff": 60.0},
+    {"name": "BS Development Studies",                  "school": "S3H",   "cutoff": 59.0}
+  ]
+}

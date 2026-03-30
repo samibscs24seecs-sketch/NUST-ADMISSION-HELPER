@@ -1,0 +1,29 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# ChromaDB (generated at runtime — re-created by reset_db.py)
+database/chroma_store/
+
+# Hash file (runtime state)
+data/content_hash.json
+
+# Claude / IDE
+.claude/
+.zencoder/
+.zenflow/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
